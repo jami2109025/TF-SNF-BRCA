@@ -1,0 +1,18 @@
+==== 02_download_clinical_pam50 started: 2026-07-05 21:36:27.053898 ====
+Pipeline seed: 20240601 
+Clinical dimensions: 1098 99 
+G3;brca subtype information from:doi.org/10.1016/j.ccell.2018.03.014
+g
+PAM50 raw dimensions: 1087 24 
+PAM50 patient column: patient 
+PAM50 subtype column: BRCA_Subtype_PAM50 
+No conflicting PAM50 duplicate calls detected.
+PAM50 rows before dedup:1087 after dedup:1087 (0 duplicate patient rows removed, of which 0 were label-conflicting)
+
+PAM50 subtype distribution:
+
+ Basal   Her2   LumA   LumB     NA Normal   <NA> 
+   192     82    562    209      2     40      0 
+
+✓ 02_download_clinical_pam50.R complete.
+==== 02_download_clinical_pam50 finished: 2026-07-05 21:40:20.912772 ====

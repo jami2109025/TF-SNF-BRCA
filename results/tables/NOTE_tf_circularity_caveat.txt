@@ -1,0 +1,17 @@
+METHODOLOGICAL CAVEAT: TF 'master regulator' identification is partly
+circular by construction
+========================================================================
+TF activity (VIPER/DoRothEA) is one of the TWO feature views fused by SNF
+to PRODUCE the cluster labels tested in this script. Finding that TF
+activity differs significantly across SNF clusters is therefore expected
+to a substantial degree simply because SNF was designed to find groups
+that separate in (among other things) TF-activity space -- it is not, on
+its own, independent evidence of true master-regulator biology.
+
+INTERPRETATION: results here should be corroborated by (a) standardized
+effect size (a genuine one-vs-rest Cohen's d, not just statistical
+significance, which is near-guaranteed for SOME TFs by construction),
+(b) concordance with independently-derived marker-gene/pathway results
+(script 11), and (c) consistency with established breast cancer subtype
+biology in the literature (e.g. ESR1/FOXA1/GATA3 activity in luminal-like
+clusters), rather than treated as a novel statistical discovery in isolation.

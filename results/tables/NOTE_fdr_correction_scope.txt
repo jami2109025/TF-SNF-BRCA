@@ -1,0 +1,8 @@
+METHODS NOTE: multiple-testing correction scope.
+===================================================
+FDR (Benjamini-Hochberg) is applied WITHIN each k-solution's 4-test
+family (stage, pathology, grade, age), separately for k=2 and k=3.
+k=2 and k=3 are treated as ALTERNATIVE PARTITION HYPOTHESES, not a
+single pooled family of 8 comparisons, since they are co-equal
+parallel solutions rather than sequential/nested tests of the same
+hypothesis. This is a deliberate, stated methodological choice.

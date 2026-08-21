@@ -1,0 +1,103 @@
+==== 17_crossover_confound_check started: 2026-08-12 14:16:42.754685 ====
+Pipeline seed: 20240601 
+Signature sizes:
+HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION                      HALLMARK_ANGIOGENESIS             HALLMARK_INFLAMMATORY_RESPONSE         HALLMARK_INTERFERON_GAMMA_RESPONSE 
+                                       200                                         36                                        201                                        200 
+
+=== STEP 2: validating the stromal/immune proxy against ABSOLUTE purity in TCGA ===
+G3;'select()' returned 1:many mapping between keys and columns
+gindexing table_tumor_purity_merged.csv [==----------------------------------------------------------------------------------------------------------------] 1.97MB/s, eta:  0sindexing table_tumor_purity_merged.csv [=================================================================================================================] 18.31MB/s, eta:  0s                                                                                                                                                                                n = 1085
+  stromal score vs purity: rho = -0.509
+  immune  score vs purity: rho = -0.751
+  (negative rho is expected: high stromal/immune content means LOW tumour purity)
+  -> proxy VALIDATED; safe to use in METABRIC.
+wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            
+=== STEP 3: scoring METABRIC ===
+  METABRIC scored: 1980 samples
+indexing table_metabric_assignment_k2.csv [=------------------------------------------------------------------------------------------------------------] 269.15kB/s, eta:  1sindexing table_metabric_assignment_k2.csv [==============================================================================================================] 14.02MB/s, eta:  0s                                                                                                                                                                              
+========== k = 2 ==========
+N: 1931  events: 1120 
+Cluster differences in proxy -- stromal p = 0.00708 | immune p = 2.33e-136
+# A tibble: 2 × 4
+  cl         n median_stromal median_immune
+  <fct>  <int>          <dbl>         <dbl>
+1 SNF_C1  1241        0.00781        -0.163
+2 SNF_C2   690        0.0293          0.279
+
+T5 (cluster x period, with stromal and immune ALSO time-varying):
+# A tibble: 10 × 5
+   term                        estimate conf.low conf.high   p.value
+   <chr>                          <dbl>    <dbl>     <dbl>     <dbl>
+ 1 clSNF_C2                       1.59     1.27      1.98   4.49e- 5
+ 2 periodlate_gt10y              NA       NA        NA     NA       
+ 3 erPositive                     0.589    0.474     0.731  1.58e- 6
+ 4 age                            1.04     1.04      1.05   3.23e-47
+ 5 stromal_z                      1.02     0.950     1.10   5.54e- 1
+ 6 immune_z                       0.917    0.840     1.00   5.57e- 2
+ 7 clSNF_C2:periodlate_gt10y      0.504    0.333     0.762  1.15e- 3
+ 8 periodlate_gt10y:erPositive    2.26     1.44      3.54   3.82e- 4
+ 9 periodlate_gt10y:stromal_z     1.00     0.879     1.14   9.93e- 1
+10 periodlate_gt10y:immune_z      1.09     0.924     1.30   2.98e- 1
+
+Cluster x period interaction across the adjustment ladder:
+# A tibble: 3 × 6
+  adjustment                          term                      estimate conf.low conf.high p.value
+  <chr>                               <chr>                        <dbl>    <dbl>     <dbl>   <dbl>
+1 T4: ER                              clSNF_C2:periodlate_gt10y    0.566    0.396     0.809 0.00181
+2 T5: ER + stromal + immune           clSNF_C2:periodlate_gt10y    0.504    0.333     0.762 0.00115
+3 T6: ER + stromal + immune + subtype clSNF_C2:periodlate_gt10y    0.666    0.415     1.07  0.0912 
+
+>>> VERDICT k = 2
+    T5 (ER + stromal + immune)            : SURVIVES
+    T6 (+ claudin subtype, strictest)     : does NOT survive
+    -> Survives tumour content but NOT the addition of subtype. The
+       crossover is shared with existing subtype calls; report it as
+       consistent with them, not as independent of them.
+indexing table_metabric_assignment_k3.csv [================================================================================-----------------------------] 466.36MB/s, eta:  0sindexing table_metabric_assignment_k3.csv [==============================================================================================================] 23.42MB/s, eta:  0s                                                                                                                                                                              
+========== k = 3 ==========
+N: 1931  events: 1120 
+Cluster differences in proxy -- stromal p = 3.38e-116 | immune p = 4.99e-139
+# A tibble: 3 × 4
+  cl         n median_stromal median_immune
+  <fct>  <int>          <dbl>         <dbl>
+1 SNF_C1   801       -0.163        -0.223  
+2 SNF_C2   589        0.229        -0.00244
+3 SNF_C3   541        0.00305       0.294  
+
+T5 (cluster x period, with stromal and immune ALSO time-varying):
+# A tibble: 12 × 5
+   term                        estimate conf.low conf.high   p.value
+   <chr>                          <dbl>    <dbl>     <dbl>     <dbl>
+ 1 clSNF_C2                       0.704    0.566     0.875  1.58e- 3
+ 2 clSNF_C3                       1.36     1.04      1.78   2.52e- 2
+ 3 periodlate_gt10y              NA       NA        NA     NA       
+ 4 erPositive                     0.609    0.480     0.774  4.79e- 5
+ 5 age                            1.04     1.03      1.05   9.07e-45
+ 6 stromal_z                      1.09     1.00      1.18   4.20e- 2
+ 7 immune_z                       0.959    0.879     1.05   3.55e- 1
+ 8 clSNF_C2:periodlate_gt10y      1.24     0.875     1.76   2.25e- 1
+ 9 clSNF_C3:periodlate_gt10y      0.471    0.282     0.787  4.07e- 3
+10 periodlate_gt10y:erPositive    1.96     1.20      3.20   7.54e- 3
+11 periodlate_gt10y:stromal_z     0.958    0.826     1.11   5.64e- 1
+12 periodlate_gt10y:immune_z      1.06     0.903     1.25   4.60e- 1
+
+Cluster x period interaction across the adjustment ladder:
+# A tibble: 6 × 6
+  adjustment                          term                      estimate conf.low conf.high p.value
+  <chr>                               <chr>                        <dbl>    <dbl>     <dbl>   <dbl>
+1 T4: ER                              clSNF_C2:periodlate_gt10y    1.23     0.913     1.65  0.175  
+2 T4: ER                              clSNF_C3:periodlate_gt10y    0.507    0.322     0.798 0.00338
+3 T5: ER + stromal + immune           clSNF_C2:periodlate_gt10y    1.24     0.875     1.76  0.225  
+4 T5: ER + stromal + immune           clSNF_C3:periodlate_gt10y    0.471    0.282     0.787 0.00407
+5 T6: ER + stromal + immune + subtype clSNF_C2:periodlate_gt10y    1.15     0.790     1.68  0.461  
+6 T6: ER + stromal + immune + subtype clSNF_C3:periodlate_gt10y    0.640    0.368     1.11  0.115  
+
+>>> VERDICT k = 3
+    T5 (ER + stromal + immune)            : SURVIVES
+    T6 (+ claudin subtype, strictest)     : does NOT survive
+    -> Survives tumour content but NOT the addition of subtype. The
+       crossover is shared with existing subtype calls; report it as
+       consistent with them, not as independent of them.
+wrote 1.09kB in  0s, 27.14MB/s                                                                                                                                                                            wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            
+✓ 17_crossover_confound_check.R complete.
+==== 17_crossover_confound_check finished: 2026-08-12 16:16:42.881117 ====

@@ -1,0 +1,5 @@
+package,version,script,date
+SNFtool,2.3.1,06_snf_clustering,2026-08-12
+mclust,6.1.2,06_snf_clustering,2026-08-12
+cluster,2.1.8.2,06_snf_clustering,2026-08-12
+parallel,4.4.3,06_snf_clustering,2026-08-12

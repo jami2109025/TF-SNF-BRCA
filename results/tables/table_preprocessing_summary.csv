@@ -1,0 +1,5 @@
+step,genes,samples
+Raw download,60660,1111
+Primary tumor only,60660,1111
+Deduplicated patients,60660,1095
+Low-count genes removed,25921,1095

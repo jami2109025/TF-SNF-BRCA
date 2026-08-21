@@ -1,0 +1,4 @@
+package,version,script,date
+dorothea,1.18.0,12_master_regulator_network,2026-07-15
+igraph,2.3.0,12_master_regulator_network,2026-07-15
+ggraph,2.2.2,12_master_regulator_network,2026-07-15

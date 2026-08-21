@@ -1,0 +1,38 @@
+R version 4.4.3 (2025-02-28 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+
+
+locale:
+[1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8    LC_MONETARY=English_United States.utf8 LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.utf8    
+
+time zone: Asia/Dhaka
+tzcode source: internal
+
+attached base packages:
+[1] parallel  stats4    stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] cluster_2.1.8.2      SNFtool_2.3.1        pheatmap_1.0.13      org.Hs.eg.db_3.20.0  AnnotationDbi_1.68.0 IRanges_2.40.1       S4Vectors_0.44.0     Biobase_2.66.0      
+ [9] BiocGenerics_0.52.0  decoupleR_2.12.0     dorothea_1.18.0      lubridate_1.9.5      forcats_1.0.1        stringr_1.6.0        dplyr_1.2.0          purrr_1.2.1         
+[17] readr_2.1.6          tidyr_1.3.2          tibble_3.3.1         ggplot2_4.0.2        tidyverse_2.0.0      here_1.0.2          
+
+loaded via a namespace (and not attached):
+  [1] DBI_1.2.3               logger_0.4.2            readxl_1.4.5            rlang_1.1.7             magrittr_2.0.4          otel_0.2.0              e1071_1.7-17           
+  [8] compiler_4.4.3          RSQLite_2.4.6           png_0.1-8               vctrs_0.7.1             rvest_1.0.5             pkgconfig_2.0.3         crayon_1.5.3           
+ [15] fastmap_1.2.0           backports_1.5.0         XVector_0.46.0          utf8_1.2.6              rmarkdown_2.30          tzdb_0.5.0              UCSC.utils_1.2.0       
+ [22] bit_4.6.0               xfun_0.56               zlibbioc_1.52.0         cachem_1.1.0            GenomeInfoDb_1.42.3     jsonlite_2.0.0          ExPosition_2.11.0      
+ [29] progress_1.2.3          blob_1.3.0              later_1.4.8             bcellViper_1.42.0       BiocParallel_1.40.0     prettyunits_1.2.0       R6_2.6.1               
+ [36] stringi_1.8.7           RColorBrewer_1.1-3      parallelly_1.47.0       cellranger_1.1.0        Rcpp_1.1.1              knitr_1.51              mixtools_2.0.0.1       
+ [43] R.utils_2.13.0          viper_1.40.0            splines_4.4.3           Matrix_1.7-4            igraph_2.3.0            timechange_0.4.0        tidyselect_1.2.1       
+ [50] rstudioapi_0.18.0       yaml_2.3.12             codetools_0.2-20        curl_7.0.0              lattice_0.22-9          withr_3.0.2             KEGGREST_1.46.0        
+ [57] S7_0.2.1                evaluate_1.0.5          survival_3.8-6          proxy_0.4-29            zip_2.3.3               xml2_1.5.2              mclust_6.1.2           
+ [64] kernlab_0.9-33          Biostrings_2.74.1       pillar_1.11.1           BiocManager_1.30.27     KernSmooth_2.23-26      checkmate_2.3.4         renv_1.2.3             
+ [71] plotly_4.12.0           generics_0.1.4          vroom_1.7.0             rprojroot_2.1.1         hms_1.1.4               scales_1.4.0            OmnipathR_3.14.0       
+ [78] class_7.3-23            glue_1.8.0              lazyeval_0.2.2          tools_4.4.3             data.table_1.18.2.1     XML_3.99-0.22           grid_4.4.3             
+ [85] prettyGraphs_2.2.0      nlme_3.1-168            GenomeInfoDbData_1.2.13 cli_3.6.5               rappdirs_0.3.4          segmented_2.2-1         viridisLite_0.4.3      
+ [92] gtable_0.3.6            R.methodsS3_1.8.2       selectr_0.5-1           digest_0.6.39           htmlwidgets_1.6.4       farver_2.1.2            memoise_2.0.1          
+ [99] htmltools_0.5.9         R.oo_1.27.1             lifecycle_1.0.5         alluvial_0.1-2          httr_1.4.8              MASS_7.3-65             bit64_4.6.0-1          

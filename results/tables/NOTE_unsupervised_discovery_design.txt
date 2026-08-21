@@ -1,0 +1,13 @@
+DESIGN NOTE: unsupervised discovery, no internal holdout split.
+================================================================
+Low-count gene filtering, top-variance feature selection, SNF
+clustering, and cluster-characterization analyses (DE, pathway,
+master-regulator) all draw on the FULL TCGA-BRCA discovery cohort
+with no train/test partition. This is standard and defensible for
+an unsupervised molecular subtyping study (there is no outcome
+label being predicted that would require a holdout), but it means
+cluster-characterization p-values (scripts 08, 09, 11, 12) reflect
+testing AFTER unsupervised grouping on the SAME data used to form
+the groups, and should be interpreted as descriptive/hypothesis-
+generating within TCGA, with independent replication carried by
+the METABRIC external validation (script 13) alone.

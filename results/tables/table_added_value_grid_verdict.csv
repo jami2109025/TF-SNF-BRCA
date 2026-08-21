@@ -1,0 +1,9 @@
+endpoint,k,n_views,n_superior_after_BH,n_equivalent_after_BH,n_inconclusive,best_view,best_point_estimate,max_mdd,grid_verdict
+ari,2,2,0,0,2,dorothea_AC__viper,0.019850267672082436,0.09686072984840109,ALL INCONCLUSIVE -- underpowered; no claim in either direction is supportable
+ari,3,2,0,0,2,collectri__viper,-0.007389701939798868,0.13583280026080222,ALL INCONCLUSIVE -- underpowered; no claim in either direction is supportable
+cindex,2,2,0,0,2,dorothea_AC__viper,0.012625753927117773,0.11978648779486102,ALL INCONCLUSIVE -- underpowered; no claim in either direction is supportable
+cindex,3,2,0,0,2,collectri__viper,0.012648069226275644,0.11235082287460822,ALL INCONCLUSIVE -- underpowered; no claim in either direction is supportable
+cox_lrt,2,2,0,2,0,collectri__viper,0.20699112946708284,5.15455632342743,"ALL VIEWS EQUIVALENT TO ZERO -- a positive, publishable negative result"
+cox_lrt,3,2,0,0,2,collectri__viper,-0.44511542353816025,17.093884326854273,ALL INCONCLUSIVE -- underpowered; no claim in either direction is supportable
+nmi,2,2,0,1,1,collectri__viper,-0.018615287176330708,0.07303869940712697,"MIXED -- some views equivalent, others inconclusive; report per view"
+nmi,3,2,0,0,2,collectri__viper,0.012448110561927971,0.09721416666948733,ALL INCONCLUSIVE -- underpowered; no claim in either direction is supportable

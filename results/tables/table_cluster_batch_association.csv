@@ -1,0 +1,5 @@
+k,batch_variable,test,p_value,FDR
+2,possible_center,insufficient data,NA,NA
+3,possible_center,insufficient data,NA,NA
+2,possible_plate,Fisher exact (simulated),0.2790720927907209,0.2790720927907209
+3,possible_plate,Fisher exact (simulated),4.999500049995e-4,9.99900009999e-4

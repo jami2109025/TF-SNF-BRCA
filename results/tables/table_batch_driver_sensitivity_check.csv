@@ -1,0 +1,2 @@
+k,batch_variable,top_category,std_residual,n_excluded,n_remaining,ari_original_vs_excluded,interpretation
+3,possible_plate,A00Z,5.003319264467435,90,1005,0.9789941926356326,High ARI: cluster structure reproduced without this category -- ASSOCIATED but not DRIVEN by it.

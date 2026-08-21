@@ -1,0 +1,28 @@
+METHODOLOGICAL CAVEAT: differential expression after unsupervised clustering
+================================================================================
+Marker-gene (DESeq2) and pathway-enrichment (GSEA) p-values in this script are
+computed using the SAME expression data used to derive the SNF cluster labels
+being tested ('testing after clustering'). DESeq2's p-values assume the
+compared groups are fixed independently of the tested data; that assumption
+is violated here.
+
+IMPORTANT DISTINCTION (added in this revision): circularity is NOT uniform
+across all reported markers. Genes that were themselves INPUT FEATURES to
+SNF clustering (the top-2000-variance gene set) are expected to differ
+across clusters substantially BY CONSTRUCTION. Genes NOT used as clustering
+features (the majority of genes tested here) differing across clusters is a
+DOWNSTREAM CONSEQUENCE of the clustering, not a direct mechanical artifact --
+this is meaningfully stronger, less circular evidence. Every row in
+table_de_markers_k2_k3.csv carries a `used_in_clustering` flag so a reader
+can distinguish these two evidence tiers directly. Fold-change rankings and
+enrichment DIRECTION remain informative for BOTH tiers; raw/padj p-value
+magnitudes should not be over-interpreted for genes with used_in_clustering
+= TRUE. Partial mitigation comes from external replication (METABRIC,
+script 13), though gene-level DE/pathway results are not independently
+re-tested in that external cohort.
+
+GSEA RANKING NOTE (added in this revision): pre-ranked GSEA (Hallmark and
+Reactome) is run on the FULL tested gene set (ranked by DESeq2's `stat`),
+not restricted to genes surviving padj-based independent filtering. This
+follows standard pre-ranked GSEA practice and avoids truncating the ranked
+list before it reaches the enrichment step.

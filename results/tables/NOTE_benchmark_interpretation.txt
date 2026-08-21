@@ -1,0 +1,46 @@
+INTERPRETIVE NOTE: what this script does and does not establish.
+======================================================================
+
+THREE DISTINCT COMPARISONS -- do not conflate them.
+
+(1) SNF_fused vs expression_only  [table_added_value_equivalence_grid.csv]
+    The ADDED-VALUE test, run across the full regulon x method grid,
+    with a paired bootstrap, an equivalence test against a
+    pre-specified SESOI, and BH correction across views within each
+    (k, endpoint) family. This is the manuscript's headline analysis.
+
+(2) SNF_fused vs naive_concatenation
+    Tests the FUSION MACHINERY, not the TF view. If fusion does not
+    beat gluing the feature matrices together, SNF specifically is
+    contributing nothing, regardless of whether the TF view is
+    informative. A separate claim, separately reportable.
+
+(3) Sample-permuted and edge-permuted controls
+    NEGATIVE CONTROLS answering different questions -- see the
+    comment block above the permutation control in this script and
+    NOTE_tf_activity_grid_design.txt from script 05.
+
+ON THE ARI-vs-PAM50 ENDPOINT.
+PAM50 labels are computed FROM gene expression. An expression-only
+clustering is therefore near-optimal for that endpoint BY
+CONSTRUCTION, and the baseline arm is being scored against a target
+derived from its own input. This endpoint is retained for continuity
+with the prior revision and with the wider literature, but it CANNOT
+carry the manuscript's central claim on its own. The survival
+endpoints do not share this defect because overall survival is not
+downstream of the expression matrix.
+
+ON THE TCGA SURVIVAL ENDPOINTS.
+Reported here as SECONDARY and EXPLORATORY because of the low event
+count in TCGA-BRCA (see the event count printed in the log). The
+adequately powered prognostic added-value test is script 14
+(METABRIC), which has roughly an order of magnitude more events and
+far longer follow-up.
+
+ON READING A NULL RESULT FROM THIS TABLE.
+Read the `conclusion` and `equivalent_after_BH` columns, NOT the CI
+alone. A CI containing zero is compatible with both 'no effect' and
+'no power'. Only rows marked EQUIVALENT support a positive claim of
+absence; rows marked INCONCLUSIVE support no claim at all, and the
+`mdd_80pct_power` column states the effect size the design could
+actually have detected.

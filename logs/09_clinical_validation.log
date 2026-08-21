@@ -1,0 +1,66 @@
+==== 09_clinical_validation started: 2026-07-11 15:07:57.435275 ====
+Pipeline seed: 20240601 
+
+--- k = 2 ---
+# A tibble: 4 × 7
+  variable        test              statistic   p_value     n     k       FDR
+  <chr>           <chr>                 <dbl>     <dbl> <int> <dbl>     <dbl>
+1 stage_simple    Chi-square             15.6  1.38e- 3  1058     2  1.38e- 3
+2 pathology_clean Chi-square             54.4  9.18e-12   859     2  2.75e-11
+3 grade           insufficient data      NA   NA         1083     2 NA       
+4 age_years       Kruskal-Wallis         11.6  6.51e- 4  1083     2  9.77e- 4
+
+--- k = 3 ---
+# A tibble: 4 × 7
+  variable        test              statistic   p_value     n     k       FDR
+  <chr>           <chr>                 <dbl>     <dbl> <int> <dbl>     <dbl>
+1 stage_simple    Fisher exact (si…      NA    1.80e- 3  1058     3  1.80e- 3
+2 pathology_clean Chi-square            155.   6.69e-31   859     3  2.01e-30
+3 grade           insufficient data      NA   NA         1083     3 NA       
+4 age_years       Kruskal-Wallis         30.0  3.14e- 7  1083     3  4.70e- 7
+
+
+Full clinical validation table (k=2 and k=3):
+# A tibble: 8 × 7
+  variable        test              statistic   p_value     n     k       FDR
+  <chr>           <chr>                 <dbl>     <dbl> <int> <dbl>     <dbl>
+1 stage_simple    Chi-square             15.6  1.38e- 3  1058     2  1.38e- 3
+2 pathology_clean Chi-square             54.4  9.18e-12   859     2  2.75e-11
+3 grade           insufficient data      NA   NA         1083     2 NA       
+4 age_years       Kruskal-Wallis         11.6  6.51e- 4  1083     2  9.77e- 4
+5 stage_simple    Fisher exact (si…      NA    1.80e- 3  1058     3  1.80e- 3
+6 pathology_clean Chi-square            155.   6.69e-31   859     3  2.01e-30
+7 grade           insufficient data      NA   NA         1083     3 NA       
+8 age_years       Kruskal-Wallis         30.0  3.14e- 7  1083     3   variable 
+✓ 09_clinical_validation.R complete.
+==== 09_clinical_validation finished: 2026-07-11 15:08:06.341102 ====
+     <dbl> <int> <dbl>     <dbl>
+1 stage_simple    Chi-square             15.6  1.38e- 3  1058     2  1.38e- 3
+2 pathology_clean Chi-square             54.4  9.18e-12   859     2  2.75e-11
+3 grade           insufficient data      NA   NA         1083     2 NA       
+4 age_years       Kruskal-Wallis         11.6  6.51e- 4  1083     2  9.77e- 4
+5 stage_simple    Fisher exact (si…      NA    1.80e- 3  1058     3  1.80e- 3
+6 pathology_clean Chi-square            155.   6.69e-31   859     3  2.01e-30
+7 grade           insufficient data      NA   NA         1083     3 NA       
+8 age_years       Kruskal-Wallis         30.0  3.14e- 7  1083     3  4.70e- 7
+
+✓ 09_clinical_validation.R complete.
+==== 09_clinical_validation finished: 2026-07-11 15:08:06.341102 ====
+         variable                     test statistic      p_value    n k
+1    stage_simple               Chi-square  15.57802 1.383755e-03 1058 2
+2 pathology_clean               Chi-square  54.40846 9.181197e-12  859 2
+3           grade        insufficient data        NA           NA 1083 2
+4       age_years           Kruskal-Wallis  11.62326 6.513221e-04 1083 2
+5    stage_simple Fisher exact (simulated)        NA 1.799820e-03 1058 3
+6 pathology_clean               Chi-square 155.02586 6.690895e-31  859 3
+7           grade        insufficient data        NA           NA 1083 3
+8       age_years           Kruskal-Wallis  29.95070 3.135373e-07 1083 3
+           FDR
+1 1.383755e-03
+2 2.754359e-11
+3           NA
+4 9.769832e-04
+5 1.799820e-03
+6 2.007268e-30
+7           NA
+8 4.703059e-07

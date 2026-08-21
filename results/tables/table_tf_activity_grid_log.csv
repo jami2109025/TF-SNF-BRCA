@@ -1,0 +1,33 @@
+view_id,regulon,method,status,n_TFs,runtime_min,message
+dorothea_AC__viper,dorothea_AC,viper,ok,263,10.522112949689229,NA
+dorothea_AB__viper,dorothea_AB,viper,ok,111,5.158644115924835,NA
+collectri__viper,collectri,viper,ok,552,42.4830588499705,NA
+dorothea_AC_edgeperm__viper,dorothea_AC_edgeperm,viper,ok,268,5.275967685381572,NA
+dorothea_AB_edgeperm__viper,dorothea_AB_edgeperm,viper,ok,112,3.9428655664126078,NA
+collectri_edgeperm__viper,collectri_edgeperm,viper,ok,558,29.293985497951507,NA
+dorothea_AC__ulm,dorothea_AC,ulm,ok,263,1.3724929014841716,NA
+dorothea_AB__ulm,dorothea_AB,ulm,ok,111,0.5606811165809631,NA
+collectri__ulm,collectri,ulm,ok,552,3.5556250333786013,NA
+dorothea_AC_edgeperm__ulm,dorothea_AC_edgeperm,ulm,ok,268,1.3892045338948569,NA
+dorothea_AB_edgeperm__ulm,dorothea_AB_edgeperm,ulm,ok,112,0.6591912508010864,NA
+collectri_edgeperm__ulm,collectri_edgeperm,ulm,ok,558,3.5029451847076416,NA
+dorothea_AC__mlm,dorothea_AC,mlm,ok,263,2.601856581370036,NA
+dorothea_AB__mlm,dorothea_AB,mlm,ok,111,1.7112136483192444,NA
+collectri__mlm,collectri,mlm,failed,NA,11.84087069829305,"After intersecting mat and network, at least 22 sources in the network are colinear with other sources.
+Cannot fit a linear model with colinear covariables, please remove them.
+Please run decoupleR::check_corr to see what regulators are correlated."
+dorothea_AC_edgeperm__mlm,dorothea_AC_edgeperm,mlm,ok,268,2.8876627842585245,NA
+dorothea_AB_edgeperm__mlm,dorothea_AB_edgeperm,mlm,ok,112,2.435191281636556,NA
+collectri_edgeperm__mlm,collectri_edgeperm,mlm,ok,558,8.641860318183898,NA
+dorothea_AC__norm_wsum,dorothea_AC,norm_wsum,ok,263,20.386571149031322,NA
+dorothea_AB__norm_wsum,dorothea_AB,norm_wsum,ok,111,3.8784313003222146,NA
+collectri__norm_wsum,collectri,norm_wsum,ok,552,47.53030566771825,NA
+dorothea_AC_edgeperm__norm_wsum,dorothea_AC_edgeperm,norm_wsum,ok,268,34.51699623266856,NA
+dorothea_AB_edgeperm__norm_wsum,dorothea_AB_edgeperm,norm_wsum,ok,112,6.002133146921794,NA
+collectri_edgeperm__norm_wsum,collectri_edgeperm,norm_wsum,ok,558,52.47360741694768,NA
+dorothea_AC__consensus,dorothea_AC,consensus,ok,263,0,rank-consensus of: dorothea_AC__viper; dorothea_AC__ulm; dorothea_AC__mlm; dorothea_AC__norm_wsum
+dorothea_AB__consensus,dorothea_AB,consensus,ok,111,0,rank-consensus of: dorothea_AB__viper; dorothea_AB__ulm; dorothea_AB__mlm; dorothea_AB__norm_wsum
+collectri__consensus,collectri,consensus,ok,552,0,rank-consensus of: collectri__viper; collectri__ulm; collectri__norm_wsum
+dorothea_AC_edgeperm__consensus,dorothea_AC_edgeperm,consensus,ok,268,0,rank-consensus of: dorothea_AC_edgeperm__viper; dorothea_AC_edgeperm__ulm; dorothea_AC_edgeperm__mlm; dorothea_AC_edgeperm__norm_wsum
+dorothea_AB_edgeperm__consensus,dorothea_AB_edgeperm,consensus,ok,112,0,rank-consensus of: dorothea_AB_edgeperm__viper; dorothea_AB_edgeperm__ulm; dorothea_AB_edgeperm__mlm; dorothea_AB_edgeperm__norm_wsum
+collectri_edgeperm__consensus,collectri_edgeperm,consensus,ok,558,0,rank-consensus of: collectri_edgeperm__viper; collectri_edgeperm__ulm; collectri_edgeperm__mlm; collectri_edgeperm__norm_wsum

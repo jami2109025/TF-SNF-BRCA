@@ -1,0 +1,121 @@
+==== 12_master_regulator_network started: 2026-07-15 05:30:15.747527 ====
+Pipeline seed: 20240601 
+METHODOLOGICAL CAVEAT: TF 'master regulator' identification is partly
+circular by construction
+========================================================================
+TF activity (VIPER/DoRothEA) is one of the TWO feature views fused by SNF
+to PRODUCE the cluster labels tested in this script. Finding that TF
+activity differs significantly across SNF clusters is therefore expected
+to a substantial degree simply because SNF was designed to find groups
+that separate in (among other things) TF-activity space -- it is not, on
+its own, independent evidence of true master-regulator biology.
+
+INTERPRETATION: results here should be corroborated by (a) standardized
+effect size (a genuine one-vs-rest Cohen's d, not just statistical
+significance, which is near-guaranteed for SOME TFs by construction),
+(b) concordance with independently-derived marker-gene/pathway results
+(script 11), and (c) consistency with established breast cancer subtype
+biology in the literature (e.g. ESR1/FOXA1/GATA3 activity in luminal-like
+clusters), rather than treated as a novel statistical discovery in isolation.
+
+indexing table_de_markers_k2_k3.csv [============================-----------------------------------------------------------------------------------------] 1.01GB/s, eta:  0sindexing table_de_markers_k2_k3.csv [===================================================================================================================] 569.39MB/s, eta:  0s                                                                                                                                                                              indexing table_de_markers_k2_k3.csv [===================================================================================================================] 557.42MB/s, eta:  0s                                                                                                                                                                              
+========== Master regulator analysis at k = 2 ==========
+align_samples(): 1095 common samples across {tf, meta}
+Top master regulators (by GENUINE one-vs-rest Cohen's d) per cluster:
+# A tibble: 20 × 5
+   SNF_cluster TF     activity_difference cohens_d      FDR
+   <chr>       <chr>                <dbl>    <dbl>    <dbl>
+ 1 SNF_C1      TFAP2C                1.62     1.96 1.30e-89
+ 2 SNF_C1      FOXA1                 1.86     1.87 5.23e-88
+ 3 SNF_C1      E2F5                 -1.94    -1.83 4.84e-88
+ 4 SNF_C1      ATF4                 -2.03    -1.58 2.11e-73
+ 5 SNF_C1      E2F2                 -3.38    -1.56 1.78e-82
+ 6 SNF_C1      E2F3                 -2.61    -1.54 8.12e-78
+ 7 SNF_C1      RFX1                  1.89     1.46 8.64e-67
+ 8 SNF_C1      PGR                   1.59     1.37 4.96e-66
+ 9 SNF_C1      RELA                 -3.00    -1.36 8.81e-61
+10 SNF_C1      MYCN                 -2.12    -1.33 2.53e-63
+11 SNF_C2      TFAP2C               -1.62    -1.96 1.30e-89
+12 SNF_C2      FOXA1                -1.86    -1.87 5.23e-88
+13 SNF_C2      E2F5                  1.94     1.83 4.84e-88
+14 SNF_C2      ATF4                  2.03     1.58 2.11e-73
+15 SNF_C2      E2F2                  3.38     1.56 1.78e-82
+16 SNF_C2      E2F3                  2.61     1.54 8.12e-78
+17 SNF_C2      RFX1                 -1.89    -1.46 8.64e-67
+18 SNF_C2      PGR                  -1.59    -1.37 4.96e-66
+19 SNF_C2      RELA                  3.00     1.36 8.81e-61
+20 SNF_C2      MYCN                  2.12     1.33 2.53e-63
+
+Triangulation with script 11 DE results (is the top TF gene itself
+differentially expressed in the SAME cluster it was identified as a
+master regulator for? `used_in_clustering` flags whether that gene was
+also an SNF input feature, i.e. how independent this corroboration is):
+# A tibble: 20 × 7
+   SNF_cluster TF     cohens_d de_concordant_cluster de_log2FC   de_padj used_in_clustering
+   <chr>       <chr>     <dbl> <lgl>                     <dbl>     <dbl> <lgl>             
+ 1 SNF_C1      TFAP2C     1.96 TRUE                     -0.639 4.63e- 19 FALSE             
+ 2 SNF_C1      FOXA1      1.87 TRUE                      2.07  2.98e-101 TRUE              
+ 3 SNF_C1      E2F5      -1.83 TRUE                     -0.742 6.13e- 39 FALSE             
+ 4 SNF_C1      ATF4      -1.58 TRUE                     -0.578 9.20e- 49 FALSE             
+ 5 SNF_C1      E2F2      -1.56 TRUE                     -1.61  6.90e-110 FALSE             
+ 6 SNF_C1      E2F3      -1.54 TRUE                     -1.19  7.32e-141 FALSE             
+ 7 SNF_C1      RFX1       1.46 TRUE                      0.168 3.09e-  7 FALSE             
+ 8 SNF_C1      PGR        1.37 TRUE                      4.17  1.85e-185 TRUE              
+ 9 SNF_C1      RELA      -1.36 TRUE                     -0.170 1.07e-  9 FALSE             
+10 SNF_C1      MYCN      -1.33 TRUE                     -1.20  3.06e- 21 TRUE              
+11 SNF_C2      TFAP2C    -1.96 TRUE                      0.639 4.63e- 19 FALSE             
+12 SNF_C2      FOXA1     -1.87 TRUE                     -2.07  2.98e-101 TRUE              
+13 SNF_C2      E2F5       1.83 TRUE                      0.742 6.13e- 39 FALSE             
+14 SNF_C2      ATF4       1.58 TRUE                      0.578 9.20e- 49 FALSE             
+15 SNF_C2      E2F2       1.56 TRUE                      1.61  6.90e-110 FALSE             
+16 SNF_C2      E2F3       1.54 TRUE                      1.19  7.32e-141 FALSE             
+17 SNF_C2      RFX1      -1.46 TRUE                     -0.168 3.09e-  7 FALSE             
+18 SNF_C2      PGR       -1.37 TRUE                     -4.17  1.85e-185 TRUE              
+19 SNF_C2      RELA       1.36 TRUE                      0.170 1.07e-  9 FALSE             
+20 SNF_C2      MYCN       1.33 TRUE                      1.20  3.06e- 21 TRUE              
+
+Join integrity check passed: triangulation has exactly 20 rows, matching top10_per_cluster (no fanout).
+
+========== Master regulator analysis at k = 3 ==========
+align_samples(): 1095 common samples across {tf, meta}
+Top master regulators (by GENUINE one-vs-rest Cohen's d) per cluster:
+# A tibble: 30 × 5
+   SNF_cluster TF     activity_difference cohens_d       FDR
+   <chr>       <chr>                <dbl>    <dbl>     <dbl>
+ 1 SNF_C1      RELA                 -3.32    -1.68 3.13e-111
+ 2 SNF_C1      ETV4                 -2.18    -1.65 3.73e-101
+ 3 SNF_C1      SPIB                 -3.47    -1.50 2.52e- 92
+ 4 SNF_C1      JUN                  -2.27    -1.49 1.65e- 91
+ 5 SNF_C1      NFATC1               -2.55    -1.47 9.52e- 88
+ 6 SNF_C1      STAT3                -2.21    -1.44 8.24e- 86
+ 7 SNF_C1      SRF                  -2.07    -1.42 1.95e- 88
+ 8 SNF_C1      JUNB                 -2.21    -1.36 1.23e- 76
+ 9 SNF_C1      HHEX                  1.60     1.36 6.79e- 85
+10 SNF_C1      BCL6                  1.94     1.35 2.42e- 74
+# ℹ 20 more rows
+# ℹ Use `print(n = ...)` to see more rows
+
+Triangulation with script 11 DE results (is the top TF gene itself
+differentially expressed in the SAME cluster it was identified as a
+master regulator for? `used_in_clustering` flags whether that gene was
+also an SNF input feature, i.e. how independent this corroboration is):
+# A tibble: 30 × 7
+   SNF_cluster TF     cohens_d de_concordant_cluster de_log2FC   de_padj used_in_clustering
+   <chr>       <chr>     <dbl> <lgl>                     <dbl>     <dbl> <lgl>             
+ 1 SNF_C1      RELA      -1.68 TRUE                    -0.0406 1.24e-  1 FALSE             
+ 2 SNF_C1      ETV4      -1.65 TRUE                    -0.543  8.78e-  8 TRUE              
+ 3 SNF_C1      SPIB      -1.50 TRUE                    -3.69   4.89e-189 TRUE              
+ 4 SNF_C1      JUN       -1.49 TRUE                    -0.796  4.57e- 40 FALSE             
+ 5 SNF_C1      NFATC1    -1.47 TRUE                    -0.585  9.04e- 28 FALSE             
+ 6 SNF_C1      STAT3     -1.44 TRUE                    -0.103  3.44e-  3 FALSE             
+ 7 SNF_C1      SRF       -1.42 TRUE                    -0.577  1.51e- 60 FALSE             
+ 8 SNF_C1      JUNB      -1.36 TRUE                    -0.768  1.10e- 33 FALSE             
+ 9 SNF_C1      HHEX       1.36 TRUE                     0.114  1.07e-  1 FALSE             
+10 SNF_C1      BCL6       1.35 TRUE                    -0.101  5.03e-  2 FALSE             
+# ℹ 20 more rows
+# ℹ Use `print(n = ...)` to see more rows
+
+Join integrity check passed: triangulation has exactly 30 rows, matching top10_per_cluster (no fanout).
+wrote 1.23kB in  0s, 3.02MB/swrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            wrote 1.65kB in  0s, 31.17MB/s                                                                                                                                                                            wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            
+✓ 12_master_regulator_network.R complete. Genuine one-vs-rest Cohen's d used for ranking; triangulation join fixed to match on cluster (no fanout); Kruskal-Wallis computed once per TF.
+==== 12_master_regulator_network finished: 2026-07-15 05:30:54.621833 ====

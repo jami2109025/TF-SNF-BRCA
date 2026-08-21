@@ -1,0 +1,56 @@
+# =====================================================
+#  TF-SNF-BRCA — files that must NOT go to GitHub
+# =====================================================
+
+# ---- R session junk ----
+.Rproj.user/
+.Rhistory
+.Ruserdata
+.RData
+.RDataTmp*
+
+# ---- PATIENT DATA: never commit ----
+data/
+*.rds
+*.RDS
+
+# ---- large intermediate objects and archives ----
+results/objects/
+*.zip
+
+# ---- renv: keep the lockfile, not the library ----
+renv/library/
+renv/staging/
+renv/local/
+renv/cellar/
+renv/python/
+renv/sandbox/
+
+# ---- local scratch ----
+omnipathr-log/
+.backup_prev_versions/
+
+# ---- LaTeX build artefacts ----
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.log
+
+# ---- but DO keep the pipeline run logs ----
+!logs/
+!logs/**
+
+# ---- older duplicate copy of the scripts ----
+files/
+
+# ---- thesis drafts, defence decks, personal preparation notes ----
+thesis/
+thesis_final_v2/
+thesis_final/*
+!thesis_final/main_thesis.pdf
+*.bak

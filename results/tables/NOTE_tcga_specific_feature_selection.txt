@@ -1,0 +1,7 @@
+NOTE: vst_top2000_genes.rds and vst_top5000_genes.rds are selected by
+expression variance WITHIN THIS TCGA-BRCA COHORT ONLY. They are a
+TCGA-optimized feature set, not an independently-derived or
+literature-curated breast cancer gene signature. External validation
+(13_external_validation.R) inherits this TCGA-defined feature space
+when projecting METABRIC samples onto TCGA cluster centroids; this
+is stated as a limitation in the manuscript.

@@ -1,0 +1,33 @@
+METHODOLOGICAL CAVEAT: cross-platform / cross-population comparability
+==========================================================================
+TCGA expression is RNA-seq; METABRIC expression is typically microarray
+(Illumina HT-12). Both cohorts are z-scored INDEPENDENTLY (within-cohort,
+per-gene) before nearest-centroid correlation classification, which is
+standard practice and avoids cross-platform batch-leakage that joint
+normalization would introduce. Independent z-scoring corrects only for
+per-gene SCALE and LOCATION differences -- it does NOT correct for
+platform-specific non-linear measurement differences, nor for population
+differences between TCGA (US-based, more ethnically diverse) and METABRIC
+(UK-based) cohorts. Classification confidence and replication strength
+should be interpreted with this caveat in mind.
+
+COVARIATE-MATCHING NOTE (added in this revision): the TCGA discovery-cohort
+multivariable Cox model adjusts for age AND stage. This METABRIC clinical
+export (cBioPortal brca_metabric clinical-patient file) does NOT contain a
+tumor stage or grade column at all -- the METABRIC multivariable model here
+is therefore adjusted for age and ER (IHC) status ONLY. This is a genuine
+gap in covariate availability between the two cohorts, not a matched
+replication of the discovery-cohort adjustment set, and should be
+interpreted as such.
+
+PROPORTIONAL-HAZARDS CAVEAT (added in this revision): cox.zph() diagnostics
+show significant non-proportional hazards for the assigned_SNF_cluster term
+(and covariates) in both the k=2 and k=3 multivariable Cox models -- visibly
+consistent with the crossing Kaplan-Meier curves in both external-validation
+KM figures. The single hazard ratios reported in
+table_metabric_cox_multivariable_k2_k3.csv are therefore time-averaged
+effects, not constant relative risks. Schoenfeld-residual plots, a
+time-split Cox model, and RMST pairwise comparisons are provided as
+PH-assumption-free (or PH-diagnostic) sensitivity analyses; see
+figure_metabric_schoenfeld_k*.png, table_metabric_cox_timesplit_k2_k3.csv,
+and table_metabric_rmst_k2_k3.csv.

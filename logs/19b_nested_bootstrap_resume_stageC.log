@@ -1,0 +1,53 @@
+==== 19b_nested_bootstrap_resume_stageC started: 2026-08-17 11:30:51.459384 ====
+Pipeline seed: 20240601 
+Loaded from cache: 100/100 replicates valid.
+Loaded cached boot_nested: 100 scored replicates, 400 rows.
+wrote 3.04kB in  0s, 54.28MB/s                                                                                                                                wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                indexing table_metabric_prognostic_added_value.csv [==========================================================] 2.15GB/s, eta:  0s                                                                                                                                  wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                
+=== PRECISION UNDER THE TWO BOOTSTRAP SCHEMES ===
+# A tibble: 8 × 6
+  view                   k scheme                      point_estimate mdd_80pct_power
+  <chr>              <dbl> <chr>                                <dbl>           <dbl>
+1 collectri__viper       2 fixed centroids (script 14)       0.000351         0.00200
+2 collectri__viper       2 full nested (script 19)          -0.000210         0.00289
+3 collectri__viper       3 fixed centroids (script 14)      -0.00106          0.00370
+4 collectri__viper       3 full nested (script 19)          -0.000340         0.00655
+5 dorothea_AC__viper     2 fixed centroids (script 14)      -0.000368         0.00289
+6 dorothea_AC__viper     2 full nested (script 19)           0.000138         0.00344
+7 dorothea_AC__viper     3 fixed centroids (script 14)      -0.000103         0.00463
+8 dorothea_AC__viper     3 full nested (script 19)           0.000420         0.00742
+  conclusion                                                                      
+  <chr>                                                                           
+1 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+2 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+3 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+4 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+5 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+6 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+7 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+8 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+
+=== NESTED BOOTSTRAP, primary endpoint (full nested) ===
+# A tibble: 4 × 9
+  view                   k point_estimate ci90_lower ci90_upper boot_sd mdd_80pct_power equivalent_after_BH
+  <chr>              <dbl>          <dbl>      <dbl>      <dbl>   <dbl>           <dbl> <lgl>              
+1 dorothea_AC__viper     2       0.000138   -0.00159    0.00223 0.00123         0.00344 TRUE               
+2 collectri__viper       2      -0.000210   -0.00206    0.00147 0.00103         0.00289 TRUE               
+3 dorothea_AC__viper     3       0.000420   -0.00414    0.00503 0.00265         0.00742 TRUE               
+4 collectri__viper       3      -0.000340   -0.00381    0.00336 0.00234         0.00655 TRUE               
+  conclusion                                                                      
+  <chr>                                                                           
+1 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+2 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+3 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+4 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+
+=== VERDICT ===
+EQUIVALENCE SURVIVES. Under the full nested bootstrap the largest MDD is 0.0074, still below the pre-specified SESOI of 0.02, and 4/4 view-by-k combinations remain equivalent after BH. The primary claim no longer rests on the fixed-centroid assumption. Report as a sensitivity analysis in Limitations. 
+
+Outputs written:
+  results/tables/table_nested_bootstrap_equivalence.csv
+  results/tables/table_nested_vs_fixed_precision.csv
+  results/tables/NOTE_nested_bootstrap_sensitivity.txt
+  (results/objects/bootstrap_nested_discovery.rds and nested_rep_*.rds
+   were reused as-is, not rewritten)
+wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                ==== 19b_nested_bootstrap_resume_stageC finished: 2026-08-17 11:30:59.000874 ====

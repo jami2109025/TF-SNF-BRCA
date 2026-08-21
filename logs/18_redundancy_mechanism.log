@@ -1,0 +1,158 @@
+==== 18_redundancy_mechanism started: 2026-08-15 19:05:08.234443 ====
+Pipeline seed: 20240601 
+
+============================================================
+18_redundancy_mechanism -- MECHANISTIC / DESCRIPTIVE ANALYSIS
+All quantities below are post hoc and explanatory. No
+confirmatory claim is made from this script.
+============================================================
+
+Canonical sample set: 1095 patients
+TF-activity grid: 29 views
+
+=== PART A: how much of TF activity is recoverable from the
+    expression features already in the model? ===
+
+Expression PCs retained: 192 (80.0% of variance; rule = first PCs reaching 80%, cap 200)
+Samples: 1095  -> samples per predictor: 5.7 
+
+  dorothea_AC__viper                  n_TF=263  CV R2 = 0.722 [0.634, 0.793]  >0.8:  23%  (50 PCs: 0.668)
+  dorothea_AB__viper                  n_TF=111  CV R2 = 0.699 [0.600, 0.767]  >0.8:  18%  (50 PCs: 0.651)
+  collectri__viper                    n_TF=552  CV R2 = 0.605 [0.521, 0.713]  >0.8:   8%  (50 PCs: 0.575)
+  dorothea_AC_edgeperm__viper         n_TF=268  CV R2 = 0.623 [0.555, 0.693]  >0.8:   1%  (50 PCs: 0.584)
+  dorothea_AB_edgeperm__viper         n_TF=112  CV R2 = 0.635 [0.561, 0.707]  >0.8:   3%  (50 PCs: 0.582)
+  collectri_edgeperm__viper           n_TF=558  CV R2 = 0.608 [0.533, 0.697]  >0.8:   2%  (50 PCs: 0.579)
+  dorothea_AC__ulm                    n_TF=263  CV R2 = 0.741 [0.651, 0.815]  >0.8:  30%  (50 PCs: 0.681)
+  dorothea_AB__ulm                    n_TF=111  CV R2 = 0.735 [0.615, 0.816]  >0.8:  29%  (50 PCs: 0.665)
+  collectri__ulm                      n_TF=552  CV R2 = 0.665 [0.566, 0.775]  >0.8:  21%  (50 PCs: 0.611)
+  dorothea_AC_edgeperm__ulm           n_TF=268  CV R2 = 0.630 [0.552, 0.693]  >0.8:   1%  (50 PCs: 0.580)
+  dorothea_AB_edgeperm__ulm           n_TF=112  CV R2 = 0.629 [0.569, 0.718]  >0.8:   6%  (50 PCs: 0.581)
+  collectri_edgeperm__ulm             n_TF=558  CV R2 = 0.660 [0.575, 0.755]  >0.8:  16%  (50 PCs: 0.618)
+  dorothea_AC__mlm                    n_TF=263  CV R2 = 0.604 [0.514, 0.689]  >0.8:   7%  (50 PCs: 0.551)
+  dorothea_AB__mlm                    n_TF=111  CV R2 = 0.607 [0.520, 0.716]  >0.8:   9%  (50 PCs: 0.567)
+  dorothea_AC_edgeperm__mlm           n_TF=268  CV R2 = 0.528 [0.455, 0.588]  >0.8:   0%  (50 PCs: 0.483)
+  dorothea_AB_edgeperm__mlm           n_TF=112  CV R2 = 0.555 [0.476, 0.621]  >0.8:   0%  (50 PCs: 0.497)
+  collectri_edgeperm__mlm             n_TF=558  CV R2 = 0.535 [0.455, 0.598]  >0.8:   0%  (50 PCs: 0.486)
+  dorothea_AC__norm_wsum              n_TF=263  CV R2 = 0.735 [0.644, 0.808]  >0.8:  28%  (50 PCs: 0.676)
+  dorothea_AB__norm_wsum              n_TF=111  CV R2 = 0.730 [0.606, 0.814]  >0.8:  27%  (50 PCs: 0.660)
+  collectri__norm_wsum                n_TF=552  CV R2 = 0.658 [0.553, 0.771]  >0.8:  21%  (50 PCs: 0.610)
+  dorothea_AC_edgeperm__norm_wsum     n_TF=268  CV R2 = 0.620 [0.544, 0.686]  >0.8:   1%  (50 PCs: 0.572)
+  dorothea_AB_edgeperm__norm_wsum     n_TF=112  CV R2 = 0.634 [0.556, 0.715]  >0.8:   6%  (50 PCs: 0.581)
+  collectri_edgeperm__norm_wsum       n_TF=558  CV R2 = 0.660 [0.573, 0.752]  >0.8:  15%  (50 PCs: 0.619)
+  dorothea_AC__consensus              n_TF=263  CV R2 = 0.692 [0.608, 0.775]  >0.8:  17%  (50 PCs: 0.642)
+  dorothea_AB__consensus              n_TF=111  CV R2 = 0.689 [0.584, 0.782]  >0.8:  22%  (50 PCs: 0.633)
+  collectri__consensus                n_TF=552  CV R2 = 0.659 [0.561, 0.766]  >0.8:  19%  (50 PCs: 0.608)
+  dorothea_AC_edgeperm__consensus     n_TF=268  CV R2 = 0.595 [0.525, 0.651]  >0.8:   0%  (50 PCs: 0.543)
+  dorothea_AB_edgeperm__consensus     n_TF=112  CV R2 = 0.609 [0.535, 0.690]  >0.8:   2%  (50 PCs: 0.561)
+  collectri_edgeperm__consensus       n_TF=558  CV R2 = 0.612 [0.534, 0.692]  >0.8:   4%  (50 PCs: 0.568)
+
+  NEGATIVE CONTROL (sample labels shuffled; expect <= 0,
+  mildly negative is normal; clearly positive would mean leakage):
+  dorothea_AC__viper [shuffled]       median CV R2 = -0.3106  (expected ~0)
+  (for reference, -n_pc/n_train = -0.219)
+
+=== PART B: how far does fusion move the geometry SNF acts on? ===
+
+[cache check expression ] max |direct - cached| = 0  -- PASS
+--- B1: geometry similarity, all views (no SNF; ~5 s/view) ---
+  dorothea_AC__viper                  rho(D_expr, D_TF) = 0.276
+  dorothea_AB__viper                  rho(D_expr, D_TF) = 0.340
+  collectri__viper                    rho(D_expr, D_TF) = 0.365
+  dorothea_AC_edgeperm__viper         rho(D_expr, D_TF) = 0.287
+  dorothea_AB_edgeperm__viper         rho(D_expr, D_TF) = 0.321
+  collectri_edgeperm__viper           rho(D_expr, D_TF) = 0.332
+  dorothea_AC__ulm                    rho(D_expr, D_TF) = 0.260
+  dorothea_AB__ulm                    rho(D_expr, D_TF) = 0.322
+  collectri__ulm                      rho(D_expr, D_TF) = 0.343
+  dorothea_AC_edgeperm__ulm           rho(D_expr, D_TF) = 0.274
+  dorothea_AB_edgeperm__ulm           rho(D_expr, D_TF) = 0.306
+  collectri_edgeperm__ulm             rho(D_expr, D_TF) = 0.316
+  dorothea_AC__mlm                    rho(D_expr, D_TF) = 0.439
+  dorothea_AB__mlm                    rho(D_expr, D_TF) = 0.378
+  dorothea_AC_edgeperm__mlm           rho(D_expr, D_TF) = 0.466
+  dorothea_AB_edgeperm__mlm           rho(D_expr, D_TF) = 0.418
+  collectri_edgeperm__mlm             rho(D_expr, D_TF) = 0.499
+  dorothea_AC__norm_wsum              rho(D_expr, D_TF) = 0.260
+  dorothea_AB__norm_wsum              rho(D_expr, D_TF) = 0.323
+  collectri__norm_wsum                rho(D_expr, D_TF) = 0.343
+  dorothea_AC_edgeperm__norm_wsum     rho(D_expr, D_TF) = 0.272
+  dorothea_AB_edgeperm__norm_wsum     rho(D_expr, D_TF) = 0.304
+  collectri_edgeperm__norm_wsum       rho(D_expr, D_TF) = 0.317
+  dorothea_AC__consensus              rho(D_expr, D_TF) = 0.308
+  dorothea_AB__consensus              rho(D_expr, D_TF) = 0.354
+  collectri__consensus                rho(D_expr, D_TF) = 0.362
+  dorothea_AC_edgeperm__consensus     rho(D_expr, D_TF) = 0.323
+  dorothea_AB_edgeperm__consensus     rho(D_expr, D_TF) = 0.340
+  collectri_edgeperm__consensus       rho(D_expr, D_TF) = 0.374
+  B1 complete and saved for all 29 views.
+
+--- B2: fusion effect, 5 view(s), ~15-20 min each ---
+    (SNF at n=1095, t=20 is ~210 GFLOP; this is the slow part)
+  [1/5] dorothea_AC__viper                  rho(W_fused,W_expr)=0.724  ARI(fused,expr-only) k2=0.761 k3=0.596
+  [timing] 13.9 min/view MEASURED -> ~55 min (0.9 h) remaining
+  [2/5] dorothea_AC_edgeperm__viper         rho(W_fused,W_expr)=0.787  ARI(fused,expr-only) k2=0.908 k3=0.652
+  [3/5] collectri__viper                    rho(W_fused,W_expr)=0.808  ARI(fused,expr-only) k2=0.893 k3=0.665
+  [4/5] collectri_edgeperm__viper           rho(W_fused,W_expr)=0.821  ARI(fused,expr-only) k2=0.947 k3=0.649
+  [5/5] dorothea_AB__viper                  rho(W_fused,W_expr)=0.770  ARI(fused,expr-only) k2=0.793 k3=0.652
+
+  B2 complete for 5 view(s).
+
+
+=== PART C: fusion machinery vs simply gluing features together ===
+    (reads script 07 output; no recomputation)
+
+indexing table_benchmark_grid_k2_k3.csv [====================================================================] 20.41MB/s, eta:  0s                                                                                                                                  wrote 1.15kB in  0s, 36.97MB/s                                                                                                                                wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                  k=2  (n=29 views)
+    baseline ARI                     = 0.4021
+    SNF_fused    - concatenation     : median +0.0011  [-0.0418, +0.0354]
+    SNF_fused    - baseline          : median +0.0101
+    concatenation- baseline          : median +0.0067
+    views where fusion beats concat  : 16 / 29
+
+  k=3  (n=29 views)
+    baseline ARI                     = 0.3053
+    SNF_fused    - concatenation     : median +0.0182  [-0.0164, +0.0312]
+    SNF_fused    - baseline          : median +0.0207
+    concatenation- baseline          : median +0.0007
+    views where fusion beats concat  : 25 / 29
+
+
+============================================================
+SUMMARY -- MECHANISM (descriptive, post hoc)
+============================================================
+
+A. FEATURE LEVEL. Median cross-validated R^2 for predicting TF
+   activity from 192 expression PCs:
+     real regulons          0.690  (range 0.604 - 0.741 across views)
+     edge-permuted regulons 0.620
+     shuffled control       -0.311  (sanity check; must be <= 0)
+     TFs with R^2 > 0.8:    21% of real-regulon TFs
+
+B. GEOMETRY LEVEL (real regulons):
+     Spearman rho(D_expression, D_TF)        median 0.342  (ALL 29 views, B1)
+     Spearman rho(W_fused, W_expression)     median 0.770
+     ARI(fused partition, expression-only)   k=2  median 0.793
+     ARI(fused partition, expression-only)   k=3  median 0.652
+
+HOW TO READ THIS
+----------------
+High Part-A R^2 means the TF view is largely a linear re-encoding of
+expression features the model already has. High Part-B ARI means the
+fused partition is close to the one expression alone would have
+produced. Together they convert the null of scripts 07 and 14 from an
+observation into an explanation: there was little independent
+information available to add, so no method operating on this feature
+space could have added much.
+
+If instead Part-A R^2 is LOW and Part-B ARI is HIGH, the conclusion
+changes: independent information existed and SNF discarded it, which
+is a criticism of the fusion method rather than of the TF view. Both
+outcomes are reportable; they are reported differently.
+
+=== PRODUCED OUTPUTS ===
+  results/tables/table_tf_expression_redundancy.csv          OK
+  results/tables/table_geometry_redundancy_all_views.csv     OK
+  results/tables/table_geometry_redundancy.csv               OK
+  results/tables/table_fusion_vs_concatenation.csv           OK
+
+Script 18 complete: 2026-08-15 20:18:41 
+==== 18_redundancy_mechanism finished: 2026-08-15 20:18:41.498754 ====

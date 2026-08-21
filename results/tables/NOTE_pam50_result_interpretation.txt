@@ -1,0 +1,10 @@
+INTERPRETIVE GUARDRAIL for this script's results:
+===================================================
+The permutation empirical p-value demonstrates agreement BEYOND WHAT
+IS EXPECTED BY CHANCE between SNF clusters and PAM50 calls. Given the
+PAM50-non-independence caveat (see NOTE_pam50_independence_caveat.txt),
+this should be reported/discussed as: 'SNF clusters show significantly
+greater agreement with PAM50 subtype calls than expected by chance,'
+NOT as 'SNF clusters are validated against independent ground truth.'
+The two statements are not equivalent, and only the first is supported
+by this analysis.

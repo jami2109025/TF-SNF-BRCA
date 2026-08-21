@@ -1,0 +1,5 @@
+package,version,script,date
+survival,3.8.6,13_external_validation,2026-07-19
+survminer,0.5.2,13_external_validation,2026-07-19
+ggpubr,0.6.3,13_external_validation,2026-07-19
+survRM2,1.0.4,13_external_validation,2026-07-19

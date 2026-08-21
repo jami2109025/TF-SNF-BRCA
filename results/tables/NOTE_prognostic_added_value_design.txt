@@ -1,0 +1,52 @@
+WHY THIS ENDPOINT, AND HOW TO REPORT IT.
+======================================================================
+Script 07 measures added value as agreement with PAM50. PAM50 labels
+are derived FROM gene expression, so an expression-only clustering is
+near-optimal for that target by construction and the baseline arm has
+a structural advantage the TF arm does not. A null result on such an
+endpoint is close to uninformative.
+
+This script measures added value as PROGNOSTIC DISCRIMINATION OF
+OVERALL SURVIVAL IN AN INDEPENDENT COHORT. Survival is not computed
+from the expression matrix, so neither arm is favoured; METABRIC took
+no part in deriving the clusters; and METABRIC supplies roughly an
+order of magnitude more events than TCGA with far longer follow-up.
+This is the primary added-value analysis for the manuscript. The
+PAM50 result should be reported as a secondary, explicitly circular
+comparison.
+
+SESOI JUSTIFICATION (C-index, 0.02).
+A 0.02 gain in C-index is at the lower edge of what is generally
+regarded as a clinically meaningful improvement in discrimination for
+a prognostic model. Choosing a small bound makes the equivalence test
+HARDER to pass, so passing it is a strong claim; and any gain below
+it could not change clinical decision-making regardless of its
+p-value.
+
+THE lrt_over_age_er ENDPOINT MATTERS INDEPENDENTLY.
+It measures information the clustering adds BEYOND age and ER status.
+A cluster solution that merely re-encodes ER scores near zero here.
+This is precisely the discrimination the TCGA-only survival analysis
+could not make, and it is the correct place to check whether the
+strong unadjusted METABRIC log-rank result reflects genuine
+subtype information or simply recapitulates ER status.
+
+LIMITATION -- BOOTSTRAP SCOPE.
+The bootstrap resamples METABRIC patients while holding the
+TCGA-derived centroids fixed. This is the correct frame for
+evaluating a fixed, pre-trained classifier on new data, and it is
+what a clinical reader assumes. It does not propagate uncertainty in
+the discovery-cohort clustering itself. A nested bootstrap that
+re-derived clusters within each replicate would, at a very large
+computational cost, and would widen these intervals.
+
+LIMITATION -- COVARIATE AVAILABILITY.
+This METABRIC export has no stage or grade column, so adjustment is
+age + ER only, whereas the TCGA discovery models adjust for age +
+stage. The adjustment sets are therefore NOT matched across cohorts.
+
+LIMITATION -- FEATURE SPACE.
+Projection uses the TCGA top-5000-variance gene set, which is a
+TCGA-optimised feature space, not an independently derived signature.
+Both arms inherit this equally, so it does not bias the CONTRAST,
+but it does limit the absolute performance of every arm.

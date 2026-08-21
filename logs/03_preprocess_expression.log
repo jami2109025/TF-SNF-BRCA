@@ -1,0 +1,51 @@
+==== 03_preprocess_expression started: 2026-07-05 21:40:48.941982 ====
+Pipeline seed: 20240601 
+Sample type codes:
+sample_type_code
+  01 
+1111 
+
+Preprocessing so far:
+# A tibble: 3 × 3
+  step                  genes samples
+  <chr>                 <int>   <int>
+1 Raw download          60660    1111
+2 Primary tumor only    60660    1111
+3 Deduplicated patients 60660    1095
+
+PAM50 distribution:
+
+ Basal   Her2   LumA   LumB Normal   <NA> 
+   190     82    562    209     40     12 
+
+PAM50 distribution:
+
+ Basal   Her2   LumA   LumB Normal   <NA> 
+   190     82    562    209     40     12 
+Warning messages:
+1: In resolve_clinical_columns(sample_metadata2) :
+  resolve_clinical_columns(): expected source column 'paper_ER_Status' for concept 'er_status' not found; filling with NA. Check CLINICAL_COLUMN_MAP in R/utils.R against the columns actually returned by GDCquery_clinic()/colData() for this TCGAbiolinks version.
+2: In resolve_clinical_columns(sample_metadata2) :
+  resolve_clinical_columns(): expected source column 'paper_PR_Status' for concept 'pr_status' not found; filling with NA. Check CLINICAL_COLUMN_MAP in R/utils.R against the columns actually returned by GDCquery_clinic()/colData() for this TCGAbiolinks version.
+3: In resolve_clinical_columns(sample_metadata2) :
+  resolve_clinical_columns(): expected source column 'paper_HER2_Final_Status' for concept 'her2_status' not found; filling with NA. Check CLINICAL_COLUMN_MAP in R/utils.R against the columns actually returned by GDCquery_clinic()/colData() for this TCGAbiolinks version.
+
+Resolved clinical columns now available on sample_metadata2:
+ [1] "vital_status"          "days_to_death"         "days_to_last_followup" "age_years"            
+ [5] "stage"                 "pathology"             "grade"                 "er_status"            
+ [9] "pr_status"             "her2_status"          
+
+Final preprocessing summary:
+# A tibble: 4 × 3
+  step                    genes samples
+  <chr>                   <int>   <int>
+1 Raw download            60660    1111
+2 Primary tumor only      60660    1111
+3 Deduplicated patients   60660    1095
+4 Low-count genes removed 25921    1095
+G3;converting counts to integer mode
+g
+VST matrix dimensions: 25921 1095 
+
+✓ 03_preprocess_expression.R complete.
+==== 03_preprocess_expression finished: 2026-07-05 21:56:17.609324 ====

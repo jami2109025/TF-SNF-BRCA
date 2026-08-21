@@ -1,0 +1,50 @@
+INCREMENTAL PROGNOSTIC VALUE AND THE TIME-VARYING EFFECT.
+======================================================================
+
+CONTEXT. Script 13 reported METABRIC k=3 log-rank p = 1.14e-07, but
+the same log shows SNF_C3 adjusted for age + ER at HR = 1.09,
+p = 0.37. Most of the unadjusted signal is ER status. Reporting the
+unadjusted p-value as external validation without that adjustment
+would be misleading, because ER is measured routinely by IHC and
+costs nothing.
+
+Q1 -- WHAT THE CLUSTERS ADD [table_metabric_nested_model_lrt.csv,
+table_metabric_cindex_ladder.csv,
+table_metabric_incremental_cindex_bootstrap.csv].
+The decisive comparison is M3 vs M2: SNF clusters added on top of
+age + ER + an EXISTING expression-based subtype call. M3 vs M1
+(without subtype) is a weaker and more flattering comparison and
+must not be reported on its own. With ~1900 patients and ~1100
+events, a trivially small improvement can be highly significant, so
+the bootstrapped delta C-index and its equivalence test -- not the
+LRT p-value -- determine whether the gain matters.
+
+Q2 -- IS THE CROSSOVER REAL [table_metabric_timevarying_models.csv].
+Script 13 found a strong SNF_C3 x period>10y interaction
+(HR = 0.324, p = 7e-11): a hazard REVERSAL at ten years. It is the
+most interesting signal in the project and is currently buried in a
+proportional-hazards caveat. Non-proportional hazards are a nuisance
+only when the time-varying effect is not the point; here it is.
+
+But ER+ disease is already known to show late recurrence, so the
+crossover must be tested against ER rather than merely adjusted for
+it. Model T4 lets BOTH the clusters and ER have period-specific
+effects. Only a cluster x period interaction that survives in T4 may
+be claimed as a cluster property. Fitting only T1 or T3 would force
+ER's own late-recurrence pattern into the cluster term -- the
+classic error in this exact situation.
+
+RMST by period is reported as model-free corroboration, because a
+Cox interaction is itself a model-based quantity.
+
+HOW TO WRITE THIS UP.
+If T4 survives: this is the manuscript's biological result -- a
+cluster whose prognostic direction reverses at ten years,
+independent of ER. If it does not: state that the external
+validation reflects ER status, and rest the contribution on the
+benchmarking framework instead. Both are defensible. Reporting the
+unadjusted log-rank p-value as if it were the finding is not.
+
+LIMITATION. The ten-year split point is pre-specified to match
+script 13, not data-driven. A data-chosen cut point would require
+correction for the selection, and is not attempted here.

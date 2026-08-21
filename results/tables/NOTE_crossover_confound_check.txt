@@ -1,0 +1,48 @@
+IS THE TEN-YEAR CROSSOVER A CLUSTER FINDING OR A TUMOUR-CONTENT FINDING?
+======================================================================
+
+WHY THIS TEST WAS NECESSARY.
+Script 16 found a hazard reversal at ten years that survives ER being
+given its own time-varying effect, corroborated model-free by RMST
+sign reversal. Script 15 found that the same clusters differ markedly
+in tumour purity (k=3 Kruskal p = 2.6e-74; SNF_C1 Cohen's d = +1.24)
+and that the k=3 partition only partly survives purity residualisation
+(ARI = 0.516). The cluster carrying the crossover, SNF_C3, is the
+LOW-purity, high-stromal/immune group. Immune infiltration is already
+known to associate with late outcome in breast cancer, so a referee
+will propose that explanation immediately -- and would be right to.
+
+WHAT WAS DONE.
+METABRIC has no purity column, so stromal and immune content were
+scored from expression using Hallmark signatures (EMT + angiogenesis;
+inflammatory response + interferon-gamma response) as the mean of
+per-gene z-scores. The proxy was VALIDATED FIRST in TCGA against
+measured ABSOLUTE purity -- see
+table_stromal_immune_proxy_validation.csv. The script refuses to
+proceed if the proxy fails that check, because adjusting for a score
+that does not capture tumour content would adjust for noise and could
+manufacture a false 'the crossover survives' result.
+
+The adjusted model (T5) gives the stromal and immune scores their OWN
+period interactions, not merely main effects. Adjusting only for main
+effects would leave a time-varying stromal effect free to load onto
+the cluster x period term -- exactly the error that fitting T1 rather
+than T4 would have made with ER.
+
+HOW TO REPORT EITHER OUTCOME.
+SURVIVES: the clusters carry time-varying prognostic information not
+reducible to ER, to existing subtype calls, or to tumour content.
+This is the biology chapter, and the purity association becomes a
+characterisation of the clusters rather than a threat to them.
+
+DOES NOT SURVIVE: the crossover is a tumour-microenvironment effect.
+Report it as such -- it remains a real and interesting observation,
+but it is not a novel subtype property, and the thesis rests on the
+methodological contribution (the equivalence-tested added-value
+framework) instead.
+
+LIMITATION. A signature-based score is a coarse proxy for cell-type
+composition. A full deconvolution (CIBERSORTx, ESTIMATE, xCell) would
+be more precise and is the obvious extension. The TCGA validation
+step bounds how badly the proxy can be failing, but does not make it
+exact.

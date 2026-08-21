@@ -1,0 +1,29 @@
+DESIGN NOTE: TF-activity inference is a GRID, not a single view.
+======================================================================
+Generated from the actual run on 2026-08-13.
+
+Rationale: a null added-value result obtained from ONE regulon and ONE
+inference method cannot be distinguished from a misconfiguration. This
+script therefore produces a grid of regulon x method views, and script
+07 evaluates added value across them.
+
+REGULON SOURCES ACTUALLY USED (6): collectri, collectri_edgeperm, dorothea_AB, dorothea_AB_edgeperm, dorothea_AC, dorothea_AC_edgeperm
+INFERENCE METHODS ACTUALLY USED (5): consensus, mlm, norm_wsum, ulm, viper
+TOTAL VIEWS PRODUCED: 29
+
+EDGE-PERMUTED CONTROLS: INCLUDED. These preserve each TF's out-degree APPROXIMATELY and preserve the mor/likelihood distribution, while randomising WHICH genes each TF regulates. Degree preservation is approximate rather than exact because random target reassignment creates duplicate (source, target) pairs that are then deduplicated; the resulting edge loss was 1.5% (DoRothEA A-C), 4.3% (DoRothEA A-B) and 10.5% (CollecTRI), largest for the densest network. This biases the permuted control toward NOISIER activity estimates, i.e. against it performing well, so it is conservative for the comparison being made, separating 'curated regulatory biology contributes' from 'averaging arbitrary gene sets of the same size contributes'. This is a strictly stronger control than the sample-permutation control in script 07; the two are NOT interchangeable.
+
+REGULON SOURCE VARIED: yes -- both DoRothEA and CollecTRI are present.
+
+All methods consume the IDENTICAL per-gene z-scored signature, so grid
+cells differ only in the factor being varied.
+
+The primary view (dorothea_AC__viper) is unchanged from the previous
+revision and is still written to its original filename, so all
+previously reported downstream results remain exactly reproducible.
+
+See also: table_tf_activity_grid_log.csv (what ran, how long, what
+failed), table_tf_view_concordance.csv (how much the views agree --
+this determines how broadly any conclusion may be generalised) and
+table_real_vs_edgepermuted_concordance.csv (whether the signal is
+regulatory content or gene-set averaging).

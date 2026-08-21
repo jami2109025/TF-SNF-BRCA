@@ -1,0 +1,38 @@
+==== 15_purity_sensitivity started: 2026-08-12 11:24:44.299691 ====
+Pipeline seed: 20240601 
+indexing table_tumor_purity_merged.csv [=================================================================================================================] 88.05MB/s, eta:  0s                                                                                                                                                                              align_samples(): 1095 common samples across {expr, tf, meta}
+Samples with a purity estimate: 1085 of 1095 
+
+=== Purity by SNF cluster (original clustering) ===
+# A tibble: 5 × 7
+      k kruskal_p kruskal_chisq cluster median_purity     n cohens_d_vs_rest
+  <dbl>     <dbl>         <dbl> <chr>           <dbl> <int>            <dbl>
+1     2  7.04e-17          69.7 SNF_C1          0.766   801            0.709
+2     2  7.04e-17          69.7 SNF_C2          0.674   284           -0.709
+3     3  2.62e-74         339.  SNF_C1          0.818   442            1.24 
+4     3  2.62e-74         339.  SNF_C2          0.684   369           -0.696
+5     3  2.62e-74         339.  SNF_C3          0.679   274           -0.589
+wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            
+Residualising 25921 genes on tumour purity ...
+Feature-set overlap after residualisation: 1890 of 2000  (94.5%)
+  -> a LOW overlap would itself indicate that the original variance-based
+     feature selection was substantially purity-driven.
+
+=== Purity-residualised re-clustering ===
+# A tibble: 4 × 6
+      k variant               ari_vs_original residual_purity_kruskal_p n_samples interpretation                                                           
+  <dbl> <chr>                           <dbl>                     <dbl>     <int> <chr>                                                                    
+1     2 A_reselected_features           0.767                  5.50e- 4      1085 PARTIAL: partition materially shifts; purity is a substantial contributor
+2     2 B_original_features             0.767                  6.60e- 4      1085 PARTIAL: partition materially shifts; purity is a substantial contributor
+3     3 A_reselected_features           0.516                  1.85e-11      1085 PARTIAL: partition materially shifts; purity is a substantial contributor
+4     3 B_original_features             0.516                  3.55e-11      1085 PARTIAL: partition materially shifts; purity is a substantial contributor
+wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            
+=== Cluster vs purity as prognostic factors (TCGA) ===
+# A tibble: 2 × 8
+      k     n events cindex_cluster_age cindex_purity_age cindex_both lrt_cluster_over_purity_age lrt_cluster_over_purity_age_p
+  <dbl> <int>  <dbl>              <dbl>             <dbl>       <dbl>                       <dbl>                         <dbl>
+1     2  1058    147              0.646             0.638       0.646                       0.907                         0.341
+2     3  1058    147              0.645             0.638       0.643                       0.599                         0.741
+wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                                                            
+✓ 15_purity_sensitivity.R complete.
+==== 15_purity_sensitivity finished: 2026-08-12 12:18:52.831294 ====

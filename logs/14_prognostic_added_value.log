@@ -1,0 +1,155 @@
+==== 14_prognostic_added_value started: 2026-08-15 10:30:47.561133 ====
+Pipeline seed: 20240601 
+TCGA discovery samples used: 1095 
+[cache check expression ] max |direct - cached| = 0  -- PASS
+Deriving TCGA labels for 29 views on 5 cores ...
+  [parallel] cluster of 5 workers verified.
+  [smoke] deriving labels for one view first ...
+  [smoke] PASS -- cluster sizes k=2: 810/285  k=3: 446/374/275 
+TCGA labels derived across 60 arm-by-k combinations
+G3;'select()' returned 1:many mapping between keys and columns
+gTCGA centroid feature space: 4545 gene symbols
+METABRIC expression matrix: 20385 1980 
+Gene coverage: 3887 / 4545  (85.5%)
+Final common gene set: 3884 
+METABRIC covariates selected by completeness -- age: AGE_AT_DIAGNOSIS | ER: ER_IHC 
+METABRIC OS status resolved:
+
+   0    1 <NA> 
+ 837 1144  528 
+METABRIC projected under 60 arms
+METABRIC analysis set (complete on outcome + age + ER): 1937 patients, 1125 events
+Median follow-up (years): 9.64 
+
+=== METABRIC prognostic discrimination by arm (point estimates) ===
+# A tibble: 60 × 5
+   view                                k cindex_adjusted cindex_cluster_only lrt_over_age_er
+   <chr>                           <int>           <dbl>               <dbl>           <dbl>
+ 1 dorothea_AB_edgeperm__norm_wsum     2           0.608               0.549            5.56
+ 2 dorothea_AB_edgeperm__viper         2           0.608               0.549            5.65
+ 3 dorothea_AB_edgeperm__consensus     2           0.608               0.549            5.65
+ 4 dorothea_AC_edgeperm__viper         2           0.608               0.548            5.88
+ 5 dorothea_AC_edgeperm__consensus     2           0.608               0.548            5.88
+ 6 dorothea_AB_edgeperm__ulm           2           0.608               0.549            5.46
+ 7 dorothea_AC_edgeperm__ulm           2           0.608               0.548            5.72
+ 8 collectri__ulm                      2           0.608               0.548            5.28
+ 9 dorothea_AB__viper                  2           0.608               0.548            5.51
+10 collectri__viper                    2           0.608               0.548            5.08
+11 dorothea_AC_edgeperm__norm_wsum     2           0.608               0.547            5.18
+12 dorothea_AB__consensus              2           0.608               0.548            4.98
+13 dorothea_AB__ulm                    2           0.608               0.548            4.91
+14 collectri__norm_wsum                2           0.608               0.547            4.91
+15 collectri__consensus                2           0.608               0.547            4.91
+16 dorothea_AB__norm_wsum              2           0.608               0.548            4.98
+17 expression_only                     2           0.607               0.546            4.64
+18 dorothea_AB_edgeperm__mlm           2           0.607               0.547            4.35
+19 dorothea_AC__consensus              2           0.607               0.547            4.50
+20 collectri_edgeperm__ulm             2           0.607               0.546            3.99
+21 collectri_edgeperm__norm_wsum       2           0.607               0.546            3.99
+22 collectri_edgeperm__viper           2           0.607               0.545            4.02
+23 dorothea_AC_edgeperm__mlm           2           0.607               0.545            4.13
+24 collectri_edgeperm__consensus       2           0.607               0.545            3.89
+25 dorothea_AC__norm_wsum              2           0.607               0.547            4.15
+26 dorothea_AC__viper                  2           0.607               0.547            4.15
+27 dorothea_AC__mlm                    2           0.607               0.544            3.80
+28 dorothea_AC__ulm                    2           0.607               0.546            3.77
+29 dorothea_AB__mlm                    2           0.607               0.544            3.62
+30 collectri_edgeperm__mlm             2           0.607               0.544            3.39
+31 dorothea_AC_edgeperm__mlm           3           0.610               0.540           13.3 
+32 collectri_edgeperm__mlm             3           0.610               0.536           11.1 
+33 dorothea_AC__consensus              3           0.610               0.570           11.0 
+34 expression_only                     3           0.610               0.569           10.5 
+35 dorothea_AC__viper                  3           0.610               0.570           10.4 
+36 dorothea_AC__mlm                    3           0.610               0.569           10.4 
+37 dorothea_AC__ulm                    3           0.610               0.569           10.1 
+38 dorothea_AC__norm_wsum              3           0.610               0.569           10.1 
+39 dorothea_AB__consensus              3           0.610               0.569           10.4 
+40 dorothea_AB__mlm                    3           0.609               0.536           10.8 
+# ℹ 20 more rows
+# ℹ Use `print(n = ...)` to see more rows
+
+Running paired METABRIC bootstrap (n = 1000 ) ...
+  batch 1-100 done (29.5 min) | 100/1000 replicates
+  batch 101-200 done (28.7 min) | 200/1000 replicates
+  batch 201-300 done (24.1 min) | 300/1000 replicates
+  batch 301-400 done (21.5 min) | 400/1000 replicates
+  batch 401-500 done (18.2 min) | 500/1000 replicates
+  batch 501-600 done (31.2 min) | 600/1000 replicates
+  batch 601-700 done (18.1 min) | 700/1000 replicates
+  batch 701-800 done (15.2 min) | 800/1000 replicates
+  batch 801-900 done (20.1 min) | 900/1000 replicates
+  batch 901-1000 done (9.7 min) | 1000/1000 replicates
+[TIMING] METABRIC bootstrap: 216.3 minutes
+
+
+=== HEADLINE: prognostic added value in METABRIC (adjusted C-index) ===
+# A tibble: 58 × 10
+       k view   point_estimate ci95_lower ci95_upper p_two_sided_BH p_tost_BH superior_after_BH equivalent_after_BH mdd_80pct_power
+   <dbl> <chr>           <dbl>      <dbl>      <dbl>          <dbl>     <dbl> <lgl>             <lgl>                         <dbl>
+ 1     2 dorot…     0.000776    -0.000501   0.00265           0.875         0 FALSE             TRUE                        0.00228
+ 2     2 dorot…     0.000764    -0.000491   0.00250           0.875         0 FALSE             TRUE                        0.00219
+ 3     2 dorot…     0.000764    -0.000491   0.00250           0.875         0 FALSE             TRUE                        0.00219
+ 4     2 dorot…     0.000690    -0.000600   0.00253           0.875         0 FALSE             TRUE                        0.00223
+ 5     2 dorot…     0.000690    -0.000600   0.00253           0.875         0 FALSE             TRUE                        0.00223
+ 6     2 dorot…     0.000657    -0.000619   0.00235           0.875         0 FALSE             TRUE                        0.00213
+ 7     2 dorot…     0.000596    -0.000713   0.00244           0.875         0 FALSE             TRUE                        0.00220
+ 8     2 colle…     0.000482    -0.000770   0.00207           0.875         0 FALSE             TRUE                        0.00201
+ 9     2 dorot…     0.000381    -0.00155    0.00260           0.875         0 FALSE             TRUE                        0.00276
+10     2 colle…     0.000351    -0.000953   0.00195           0.875         0 FALSE             TRUE                        0.00200
+11     2 dorot…     0.000334    -0.00113    0.00219           0.875         0 FALSE             TRUE                        0.00220
+12     2 dorot…     0.000280    -0.00157    0.00235           0.875         0 FALSE             TRUE                        0.00258
+13     2 colle…     0.000175    -0.00104    0.00137           0.875         0 FALSE             TRUE                        0.00168
+14     2 colle…     0.000175    -0.00104    0.00137           0.875         0 FALSE             TRUE                        0.00168
+15     2 dorot…     0.000174    -0.00195    0.00220           0.917         0 FALSE             TRUE                        0.00288
+16     2 dorot…     0.000141    -0.00198    0.00203           0.917         0 FALSE             TRUE                        0.00278
+17     2 dorot…    -0.00000393  -0.000954   0.00101           0.988         0 FALSE             TRUE                        0.00133
+18     2 dorot…    -0.000123    -0.00237    0.00188           0.986         0 FALSE             TRUE                        0.00283
+19     2 colle…    -0.000165    -0.00134    0.000885          0.875         0 FALSE             TRUE                        0.00144
+20     2 colle…    -0.000165    -0.00134    0.000885          0.875         0 FALSE             TRUE                        0.00144
+21     2 colle…    -0.000182    -0.00139    0.000832          0.875         0 FALSE             TRUE                        0.00145
+22     2 dorot…    -0.000193    -0.00118    0.000661          0.875         0 FALSE             TRUE                        0.00121
+23     2 colle…    -0.000285    -0.00190    0.000913          0.875         0 FALSE             TRUE                        0.00186
+24     2 dorot…    -0.000357    -0.00274    0.00157           0.875         0 FALSE             TRUE                        0.00294
+25     2 dorot…    -0.000368    -0.00266    0.00143           0.875         0 FALSE             TRUE                        0.00289
+26     2 dorot…    -0.000423    -0.00221    0.000934          0.875         0 FALSE             TRUE                        0.00208
+27     2 dorot…    -0.000491    -0.00295    0.00141           0.875         0 FALSE             TRUE                        0.00297
+28     2 dorot…    -0.000580    -0.00256    0.000788          0.875         0 FALSE             TRUE                        0.00223
+29     2 colle…    -0.000673    -0.00255    0.000536          0.875         0 FALSE             TRUE                        0.00222
+30     3 dorot…     0.000563    -0.00279    0.00371           0.962         0 FALSE             TRUE                        0.00452
+31     3 colle…     0.000248    -0.00202    0.00246           0.962         0 FALSE             TRUE                        0.00306
+32     3 dorot…     0.0000655   -0.00324    0.00321           0.962         0 FALSE             TRUE                        0.00442
+33     3 dorot…    -0.000103    -0.00353    0.00334           0.962         0 FALSE             TRUE                        0.00463
+34     3 dorot…    -0.000140    -0.00259    0.00231           0.962         0 FALSE             TRUE                        0.00339
+35     3 dorot…    -0.000211    -0.00369    0.00323           0.962         0 FALSE             TRUE                        0.00461
+36     3 dorot…    -0.000211    -0.00369    0.00323           0.962         0 FALSE             TRUE                        0.00461
+37     3 dorot…    -0.000270    -0.00342    0.00261           0.962         0 FALSE             TRUE                        0.00403
+38     3 dorot…    -0.000318    -0.00326    0.00217           0.962         0 FALSE             TRUE                        0.00385
+39     3 dorot…    -0.000411    -0.00379    0.00276           0.962         0 FALSE             TRUE                        0.00427
+40     3 dorot…    -0.000513    -0.00379    0.00270           0.962         0 FALSE             TRUE                        0.00433
+# ℹ 18 more rows
+# ℹ Use `print(n = ...)` to see more rows
+
+=== METABRIC grid verdict ===
+# A tibble: 6 × 7
+  endpoint                k n_views n_superior_after_BH n_equivalent_after_BH best_view                       best_point_estimate
+  <chr>               <dbl>   <int>               <int>                 <int> <chr>                                         <dbl>
+1 cindex_adjusted         2      29                   0                    29 dorothea_AB_edgeperm__norm_wsum            0.000776
+2 cindex_adjusted         3      29                   0                    29 dorothea_AC_edgeperm__mlm                  0.000563
+3 cindex_cluster_only     2      29                   0                    29 dorothea_AC_edgeperm__consensus            0.00295 
+4 cindex_cluster_only     3      29                   0                     0 dorothea_AB__ulm                           0.00146 
+5 lrt_over_age_er         2      29                   0                     7 dorothea_AC_edgeperm__consensus            1.21    
+6 lrt_over_age_er         3      29                   0                     0 dorothea_AC_edgeperm__mlm                  2.75    
+
+
+================ PRODUCED OUTPUTS ================
+  PRESENT  results/objects/bootstrap_metabric_prognostic.rds        1080.4 KB
+  PRESENT  results/tables/table_metabric_prognostic_point_scores.csv 4.8 KB
+  PRESENT  results/tables/table_metabric_prognostic_added_value.csv 62.1 KB
+  PRESENT  results/tables/table_metabric_prognostic_verdict.csv     0.5 KB
+  PRESENT  results/figures/figure_metabric_prognostic_added_value.png 141.1 KB
+  METABRIC bootstrap batches on disk: 10
+==================================================
+
+
+✓ 14_prognostic_added_value.R complete.
+==== 14_prognostic_added_value finished: 2026-08-15 17:58:04.864147 ====

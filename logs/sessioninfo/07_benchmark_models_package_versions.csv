@@ -1,0 +1,6 @@
+package,version,script,date
+SNFtool,2.3.1,07_benchmark_models,2026-08-15
+mclust,6.1.2,07_benchmark_models,2026-08-15
+cluster,2.1.8.2,07_benchmark_models,2026-08-15
+survival,3.8.6,07_benchmark_models,2026-08-15
+parallel,4.4.3,07_benchmark_models,2026-08-15

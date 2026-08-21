@@ -1,0 +1,9 @@
+view,k,scheme,point_estimate,mdd_80pct_power,conclusion
+collectri__viper,2,fixed centroids (script 14),3.5080998271434994e-4,0.00200298814014729,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+collectri__viper,2,full nested (script 19),-2.099647699960705e-4,0.00288976661120208,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+collectri__viper,3,fixed centroids (script 14),-0.00105974642747342,0.00369651356652264,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+collectri__viper,3,full nested (script 19),-3.403163911596163e-4,0.0065461830720653655,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+dorothea_AC__viper,2,fixed centroids (script 14),-3.68157322022856e-4,0.00288503849542432,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+dorothea_AC__viper,2,full nested (script 19),1.3755037050452445e-4,0.003442576415928113,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+dorothea_AC__viper,3,fixed centroids (script 14),-1.0299672098682278e-4,0.00462760570684664,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+dorothea_AC__viper,3,full nested (script 19),4.200992619452326e-4,0.0074165588034015035,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI

@@ -1,0 +1,7 @@
+regulon,n_TFs,n_edges,median_regulon_size,has_likelihood
+dorothea_AC,263,12699,35,FALSE
+dorothea_AB,111,5999,20,FALSE
+collectri,552,54331,34.5,FALSE
+dorothea_AC_edgeperm,268,12510,34,FALSE
+dorothea_AB_edgeperm,112,5741,21,FALSE
+collectri_edgeperm,558,48634,35,FALSE

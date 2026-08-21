@@ -1,0 +1,160 @@
+==== 19_nested_bootstrap_sensitivity started: 2026-08-17 01:28:33.766497 ====
+Pipeline seed: 20240601 
+TCGA discovery samples: 1095 
+Views: dorothea_AC__viper, collectri__viper 
+[cache check expression (nested) ] max |direct - cached| = 0  -- PASS
+[cache check TF: dorothea_AC__viper ] max |direct - cached| = 0  -- PASS
+[cache check TF: collectri__viper ] max |direct - cached| = 0  -- PASS
+Distance caches built and verified.
+[memory after distance caches] master R is holding ~189 MB
+
+--- preflight: stage B prerequisites ---
+  OK   METABRIC expression 
+  OK   METABRIC clinical 
+  OK   All-gene VST matrix 
+  OK   Prepared clinical frame (from scripts/14b_export_clin.R) 
+  OK   clinical frame carries all five model variables ( 2509 rows )
+  OK   vst_top5000 columns align with common_samples
+Preflight passed -- stage B will not fail for a missing input.
+
+--- timing probe: 2 replicate(s), serial ---
+  replicate 1 already cached
+  replicate 2 already cached
+Probe PASS (all probe replicates were already cached, so no timing
+was measured this run -- the projection below is skipped).
+  k=2 sizes, expression arm : 881/214
+  k=2 sizes, dorothea_AC__viper    : 835/260
+  k=2 sizes, collectri__viper      : 848/247
+
+--- stage A: 98 of 100 replicates still to run ---
+
+  !! THIS RUN IS UNATTENDED AND LONG. Before you walk away:
+     - disable Windows sleep/hibernate (Settings > Power > Screen and sleep
+       > 'When plugged in, put my device to sleep after' = Never)
+     - keep the laptop on mains power
+     - at 16 GB with 7 workers there is ample memory headroom
+     A sleeping machine suspends the workers and the run does not finish.
+     Completed replicates are on disk, so re-sourcing resumes -- but you
+     lose the night.
+
+  chunk 1/14 (reps 3-9) done in 26.7 min | 0 failed
+[memory after chunk 1] master R is holding ~190 MB
+  chunk 2/14 (reps 10-16) done in 24.8 min | 0 failed
+  chunk 3/14 (reps 17-23) done in 24.1 min | 0 failed
+  chunk 4/14 (reps 24-30) done in 24.7 min | 0 failed
+[memory after chunk 4] master R is holding ~190 MB
+  chunk 5/14 (reps 31-37) done in 24.2 min | 0 failed
+  chunk 6/14 (reps 38-44) done in 25.2 min | 0 failed
+  chunk 7/14 (reps 45-51) done in 26.9 min | 0 failed
+[memory after chunk 7] master R is holding ~190 MB
+  chunk 8/14 (reps 52-58) done in 27.0 min | 0 failed
+  chunk 9/14 (reps 59-65) done in 27.1 min | 0 failed
+  chunk 10/14 (reps 66-72) done in 27.1 min | 0 failed
+[memory after chunk 10] master R is holding ~190 MB
+  chunk 11/14 (reps 73-79) done in 26.9 min | 0 failed
+  chunk 12/14 (reps 80-86) done in 26.9 min | 0 failed
+  chunk 13/14 (reps 87-93) done in 26.8 min | 0 failed
+[memory after chunk 13] master R is holding ~190 MB
+  chunk 14/14 (reps 94-100) done in 27.1 min | 0 failed
+Stage A complete: 100/100 replicates valid.
+
+--- stage B: METABRIC projection and scoring ---
+[memory stage B start -- workers released] master R is holding ~165 MB
+G3;'select()' returned 1:many mapping between keys and columns
+gTCGA centroid feature space: 4545 gene symbols
+Gene coverage: 3887/4545 (85.5%)
+Final common gene set: 3884 
+METABRIC analysis set: 1937 patients, 1125 events
+  (script 14 reported 1937 patients / 1125 events -- these must match)
+  scored 10/100 replicates
+  scored 20/100 replicates
+  scored 30/100 replicates
+  scored 40/100 replicates
+  scored 50/100 replicates
+  scored 60/100 replicates
+  scored 70/100 replicates
+  scored 80/100 replicates
+  scored 90/100 replicates
+  scored 100/100 replicates
+Scored replicates: 100 | arm-k combinations skipped for degenerate centroids: 0 
+indexing table_metabric_prognostic_added_value.csv [========================================================] 492.63MB/s, eta:  0s                                                                                                                                  wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                
+=== PRECISION UNDER THE TWO BOOTSTRAP SCHEMES ===
+# A tibble: 8 × 6
+  view                   k scheme                      point_estimate mdd_80pct_power
+  <chr>              <dbl> <chr>                                <dbl>           <dbl>
+1 collectri__viper       2 fixed centroids (script 14)       0.000351         0.00200
+2 collectri__viper       2 full nested (script 19)          -0.000210         0.00289
+3 collectri__viper       3 fixed centroids (script 14)      -0.00106          0.00370
+4 collectri__viper       3 full nested (script 19)          -0.000340         0.00655
+5 dorothea_AC__viper     2 fixed centroids (script 14)      -0.000368         0.00289
+6 dorothea_AC__viper     2 full nested (script 19)           0.000138         0.00344
+7 dorothea_AC__viper     3 fixed centroids (script 14)      -0.000103         0.00463
+8 dorothea_AC__viper     3 full nested (script 19)           0.000420         0.00742
+  conclusion                                                                      
+  <chr>                                                                           
+1 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+2 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+3 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+4 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+5 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+6 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+7 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+8 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+
+=== NESTED BOOTSTRAP, primary endpoint (full nested) ===
+Error: unable to find an inherited method for function ‘select’ for signature ‘x = "tbl_df"’
+R/utils.R loaded (publication-ready revision). Pipeline seed = 20240601 
+R/utils_benchmark.R loaded. SESOI (ARI) = 0.05 | equivalence alpha = 0.05 
+==== 19b_nested_bootstrap_resume_stageC started: 2026-08-17 11:30:51.459384 ====
+Pipeline seed: 20240601 
+Loaded from cache: 100/100 replicates valid.
+Loaded cached boot_nested: 100 scored replicates, 400 rows.
+wrote 3.04kB in  0s, 54.28MB/s                                                                                                                                wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                indexing table_metabric_prognostic_added_value.csv [==========================================================] 2.15GB/s, eta:  0s                                                                                                                                  wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                
+=== PRECISION UNDER THE TWO BOOTSTRAP SCHEMES ===
+# A tibble: 8 × 6
+  view                   k scheme                      point_estimate mdd_80pct_power
+  <chr>              <dbl> <chr>                                <dbl>           <dbl>
+1 collectri__viper       2 fixed centroids (script 14)       0.000351         0.00200
+2 collectri__viper       2 full nested (script 19)          -0.000210         0.00289
+3 collectri__viper       3 fixed centroids (script 14)      -0.00106          0.00370
+4 collectri__viper       3 full nested (script 19)          -0.000340         0.00655
+5 dorothea_AC__viper     2 fixed centroids (script 14)      -0.000368         0.00289
+6 dorothea_AC__viper     2 full nested (script 19)           0.000138         0.00344
+7 dorothea_AC__viper     3 fixed centroids (script 14)      -0.000103         0.00463
+8 dorothea_AC__viper     3 full nested (script 19)           0.000420         0.00742
+  conclusion                                                                      
+  <chr>                                                                           
+1 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+2 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+3 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+4 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+5 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+6 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+7 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+8 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+
+=== NESTED BOOTSTRAP, primary endpoint (full nested) ===
+# A tibble: 4 × 9
+  view                   k point_estimate ci90_lower ci90_upper boot_sd mdd_80pct_power equivalent_after_BH
+  <chr>              <dbl>          <dbl>      <dbl>      <dbl>   <dbl>           <dbl> <lgl>              
+1 dorothea_AC__viper     2       0.000138   -0.00159    0.00223 0.00123         0.00344 TRUE               
+2 collectri__viper       2      -0.000210   -0.00206    0.00147 0.00103         0.00289 TRUE               
+3 dorothea_AC__viper     3       0.000420   -0.00414    0.00503 0.00265         0.00742 TRUE               
+4 collectri__viper       3      -0.000340   -0.00381    0.00336 0.00234         0.00655 TRUE               
+  conclusion                                                                      
+  <chr>                                                                           
+1 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+2 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+3 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+4 EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI
+
+=== VERDICT ===
+EQUIVALENCE SURVIVES. Under the full nested bootstrap the largest MDD is 0.0074, still below the pre-specified SESOI of 0.02, and 4/4 view-by-k combinations remain equivalent after BH. The primary claim no longer rests on the fixed-centroid assumption. Report as a sensitivity analysis in Limitations. 
+
+Outputs written:
+  results/tables/table_nested_bootstrap_equivalence.csv
+  results/tables/table_nested_vs_fixed_precision.csv
+  results/tables/NOTE_nested_bootstrap_sensitivity.txt
+  (results/objects/bootstrap_nested_discovery.rds and nested_rep_*.rds
+   were reused as-is, not rewritten)
+wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                ==== 19b_nested_bootstrap_resume_stageC finished: 2026-08-17 11:30:59.000874 ====

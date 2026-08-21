@@ -1,0 +1,10 @@
+QC outlier decision (2026-07-06)
+Samples flagged at |PCA z-score| > 4 on PC1/PC2: 0
+DECISION: All samples retained in the primary analysis.
+RATIONALE: PCA outlier flags based on top-2000-variance gene expression
+can reflect genuine extreme molecular phenotypes rather than technical
+artifacts, and no independent technical QC metric was available to
+corroborate exclusion. Flagged sample IDs are reported in
+table_qc_pca_outlier_flags.csv. A sensitivity re-run of scripts 06-13
+excluding these samples IS PROVIDED as a supplementary analysis
+(see run_sensitivity_no_outliers.R) rather than only promised here.

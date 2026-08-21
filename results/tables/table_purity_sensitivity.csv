@@ -1,0 +1,5 @@
+k,variant,ari_vs_original,residual_purity_kruskal_p,n_samples,interpretation
+2,A_reselected_features,0.7672913404298976,5.495838949108549e-4,1085,PARTIAL: partition materially shifts; purity is a substantial contributor
+2,B_original_features,0.7672913404298976,6.595129669980603e-4,1085,PARTIAL: partition materially shifts; purity is a substantial contributor
+3,A_reselected_features,0.515726512021181,1.8484056301527857e-11,1085,PARTIAL: partition materially shifts; purity is a substantial contributor
+3,B_original_features,0.5156784585182984,3.548377284920836e-11,1085,PARTIAL: partition materially shifts; purity is a substantial contributor

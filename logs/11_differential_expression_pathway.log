@@ -1,0 +1,76 @@
+==== 11_differential_expression_pathway started: 2026-07-13 17:48:09.978567 ====
+Pipeline seed: 20240601 
+METHODOLOGICAL CAVEAT: differential expression after unsupervised clustering
+================================================================================
+Marker-gene (DESeq2) and pathway-enrichment (GSEA) p-values in this script are
+computed using the SAME expression data used to derive the SNF cluster labels
+being tested ('testing after clustering'). DESeq2's p-values assume the
+compared groups are fixed independently of the tested data; that assumption
+is violated here.
+
+IMPORTANT DISTINCTION (added in this revision): circularity is NOT uniform
+across all reported markers. Genes that were themselves INPUT FEATURES to
+SNF clustering (the top-2000-variance gene set) are expected to differ
+across clusters substantially BY CONSTRUCTION. Genes NOT used as clustering
+features (the majority of genes tested here) differing across clusters is a
+DOWNSTREAM CONSEQUENCE of the clustering, not a direct mechanical artifact --
+this is meaningfully stronger, less circular evidence. Every row in
+table_de_markers_k2_k3.csv carries a `used_in_clustering` flag so a reader
+can distinguish these two evidence tiers directly. Fold-change rankings and
+enrichment DIRECTION remain informative for BOTH tiers; raw/padj p-value
+magnitudes should not be over-interpreted for genes with used_in_clustering
+= TRUE. Partial mitigation comes from external replication (METABRIC,
+script 13), though gene-level DE/pathway results are not independently
+re-tested in that external cohort.
+
+GSEA RANKING NOTE (added in this revision): pre-ranked GSEA (Hallmark and
+Reactome) is run on the FULL tested gene set (ranked by DESeq2's `stat`),
+not restricted to genes surviving padj-based independent filtering. This
+follows standard pre-ranked GSEA practice and avoids truncating the ranked
+list before it reaches the enrichment step.
+
+G3;'select()' returned 1:many mapping between keys and columns
+gClustering-input gene count (Ensembl): 2000  -> resolved to 1864 unique symbols
+ (some loss expected: this script's symbol_map was built from the FULL filtered gene set, dedup'd by variance -- a top-2000-variance Ensembl ID could map to a symbol whose HIGHEST-variance representative elsewhere was a DIFFERENT Ensembl ID, in which case it won't appear as a symbol here. This is a known, minor, and correctly-behaved edge case of the dedup rule, not a bug.)
+
+========== DE + GSEA at k = 2 ==========
+
+--- Cluster SNF_C1 (k= 2 ) vs rest ---
+G3;converting counts to integer mode
+gSignificant markers (padj<0.05, |LFC|>=1): 4101  (of which 1270 were clustering-input genes)
+Genes excluded from padj (independent filtering): 0 -- these ARE still included in the GSEA ranked list via res_df_full
+GSEA (Hallmark) ranked list size: 20303 genes
+GSEA (Reactome) ranked list size: 20303 genes
+
+--- Cluster SNF_C2 (k= 2 ) vs rest ---
+G3;converting counts to integer mode
+gSignificant markers (padj<0.05, |LFC|>=1): 4101  (of which 1270 were clustering-input genes)
+Genes excluded from padj (independent filtering): 0 -- these ARE still included in the GSEA ranked list via res_df_full
+GSEA (Hallmark) ranked list size: 20303 genes
+GSEA (Reactome) ranked list size: 20303 genes
+
+========== DE + GSEA at k = 3 ==========
+
+--- Cluster SNF_C1 (k= 3 ) vs rest ---
+G3;converting counts to integer mode
+gSignificant markers (padj<0.05, |LFC|>=1): 3099  (of which 980 were clustering-input genes)
+Genes excluded from padj (independent filtering): 0 -- these ARE still included in the GSEA ranked list via res_df_full
+GSEA (Hallmark) ranked list size: 20303 genes
+GSEA (Reactome) ranked list size: 20303 genes
+
+--- Cluster SNF_C2 (k= 3 ) vs rest ---
+G3;converting counts to integer mode
+gSignificant markers (padj<0.05, |LFC|>=1): 1700  (of which 579 were clustering-input genes)
+Genes excluded from padj (independent filtering): 0 -- these ARE still included in the GSEA ranked list via res_df_full
+GSEA (Hallmark) ranked list size: 20303 genes
+GSEA (Reactome) ranked list size: 20303 genes
+
+--- Cluster SNF_C3 (k= 3 ) vs rest ---
+G3;converting counts to integer mode
+gSignificant markers (padj<0.05, |LFC|>=1): 4100  (of which 1274 were clustering-input genes)
+Genes excluded from padj (independent filtering): 0 -- these ARE still included in the GSEA ranked list via res_df_full
+GSEA (Hallmark) ranked list size: 20303 genes
+GSEA (Reactome) ranked list size: 20303 genes
+
+✓ 11_differential_expression_pathway.R complete. used_in_clustering flag added for circularity transparency; GSEA now ranks on the full tested gene set.
+==== 11_differential_expression_pathway finished: 2026-07-13 19:52:37.604985 ====

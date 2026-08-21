@@ -1,0 +1,36 @@
+R version 4.4.3 (2025-02-28 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+
+
+locale:
+[1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8    LC_MONETARY=English_United States.utf8
+[4] LC_NUMERIC=C                           LC_TIME=English_United States.utf8    
+
+time zone: Asia/Dhaka
+tzcode source: internal
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] pheatmap_1.0.13      org.Hs.eg.db_3.20.0  AnnotationDbi_1.68.0 IRanges_2.40.1       S4Vectors_0.44.0     Biobase_2.66.0       BiocGenerics_0.52.0 
+ [8] decoupleR_2.12.0     dorothea_1.18.0      stringr_1.6.0        dplyr_1.2.0          purrr_1.2.1          readr_2.1.6          tidyr_1.3.2         
+[15] tibble_3.3.1         ggplot2_4.0.2        tidyverse_2.0.0      here_1.0.2          
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.2.1        viridisLite_0.4.3       farver_2.1.2            blob_1.3.0              Biostrings_2.74.1       mixtools_2.0.0.1       
+ [7] S7_0.2.1                fastmap_1.2.0           lazyeval_0.2.2          digest_0.6.39           lifecycle_1.0.5         survival_3.8-6         
+[13] KEGGREST_1.46.0         RSQLite_2.4.6           kernlab_0.9-33          magrittr_2.0.4          compiler_4.4.3          rlang_1.1.7            
+[19] tools_4.4.3             utf8_1.2.6              data.table_1.18.2.1     htmlwidgets_1.6.4       bit_4.6.0               RColorBrewer_1.1-3     
+[25] BiocParallel_1.40.0     KernSmooth_2.23-26      withr_3.0.2             viper_1.40.0            grid_4.4.3              e1071_1.7-17           
+[31] MASS_7.3-65             scales_1.4.0            cli_3.6.5               crayon_1.5.3            generics_0.1.4          rstudioapi_0.18.0      
+[37] bcellViper_1.42.0       httr_1.4.8              tzdb_0.5.0              DBI_1.2.3               cachem_1.1.0            proxy_0.4-29           
+[43] splines_4.4.3           zlibbioc_1.52.0         parallel_4.4.3          BiocManager_1.30.27     XVector_0.46.0          vctrs_0.7.1            
+[49] Matrix_1.7-4            jsonlite_2.0.0          hms_1.1.4               bit64_4.6.0-1           plotly_4.12.0           glue_1.8.0             
+[55] parallelly_1.47.0       codetools_0.2-20        stringi_1.8.7           gtable_0.3.6            GenomeInfoDb_1.42.3     UCSC.utils_1.2.0       
+[61] pillar_1.11.1           htmltools_0.5.9         GenomeInfoDbData_1.2.13 R6_2.6.1                rprojroot_2.1.1         vroom_1.7.0            
+[67] lattice_0.22-9          png_0.1-8               segmented_2.2-1         memoise_2.0.1           renv_1.2.3              class_7.3-23           
+[73] nlme_3.1-168            forcats_1.0.1           pkgconfig_2.0.3        

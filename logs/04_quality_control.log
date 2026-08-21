@@ -1,0 +1,175 @@
+==== 04_quality_control started: 2026-07-06 00:28:32.964189 ====
+Pipeline seed: 20240601 
+
+> ensure_dirs()
+
+> set_pipeline_seed()
+
+> vst_top2000     <- readRDS(here::here("data/processed/vst_top2000_genes.rds"))
+
+> sample_metadata <- readRDS(here::here("data/processed/sample_metadata_matched.rds"))
+
+> stopifnot(identical(colnames(vst_top2000), rownames(sample_metadata)))
+
+> # -----------------------------
+> # PCA -- scaled and unscaled, both saved as an explicit sensitivity check
+> # -----------------------------
+> run_ .... [TRUNCATED] 
+
+> pca_scaled   <- run_pca(vst_top2000, scale_flag = TRUE,  label = "scaled")
+wrote 1.02kB in  0s, 393.34kB/swrote 103.12kB in  0s, 513.62kB/swrote 104.15kB in  0s, 272.82kB/swrote 105.17kB in  0s, 274.39kB/swrote 106.20kB in  0s, 275.08kB/swrote 107.23kB in  0s, 276.62kB/swrote 108.26kB in  0s, 277.86kB/swrote 109.30kB in  0s, 279.27kB/swrote 110.32kB in  0s, 280.58kB/swrote 111.35kB in  0s, 281.70kB/swrote 112.38kB in  0s, 283.13kB/swrote 113.42kB in  0s, 283.32kB/swrote 114.46kB in  0s, 284.45kB/swrote 115.50kB in  0s, 285.79kB/swrote 116.54kB in  0s, 286.46kB/swrote 117.56kB in  0s, 287.77kB/swrote 118.59kB in  0s, 288.05kB/swrote 119.62kB in  0s, 289.30kB/swrote 120.65kB in  0s, 289.95kB/swrote 121.68kB in  0s, 291.49kB/swrote 122.71kB in  0s, 292.00kB/swrote 123.74kB in  0s, 293.52kB/swrote 124.77kB in  0s, 293.71kB/swrote 125.80kB in  0s, 295.41kB/swrote 126.84kB in  0s, 293.01kB/swrote 127.86kB in  1s, 170.11kB/swrote 128.89kB in  1s, 171.07kB/swrote 129.91kB in  1s, 171.84kB/swrote 130.95kB in  1s, 172.93kB/swrote 131.98kB in  1s, 173.81kB/swrote 133.02kB in  1s, 174.76kB/swrote 134.06kB in  1s, 175.68kB/swrote 135.09kB in  1s, 176.59kB/swrote 136.13kB in  1s, 177.53kB/swrote 137.16kB in  1s, 178.33kB/swrote 138.20kB in  1s, 179.12kB/swrote 139.24kB in  1s, 180.08kB/swrote 140.27kB in  1s, 181.10kB/s                                                                                                                                         wrote 2.15GB in  1s, 2.15GB/s                                                                                                                                         
+> pca_unscaled <- run_pca(vst_top2000, scale_flag = FALSE, label = "unscaled")
+wrote 1.03kB in  0s, 25.79MB/s                                                                                                                                         wrote 2.05kB in  0s, 5.36kB/swrote 3.08kB in  0s, 8.00kB/swrote 4.11kB in  0s, 10.60kB/swrote 5.14kB in  0s, 13.20kB/swrote 6.18kB in  0s, 15.77kB/swrote 7.20kB in  0s, 18.34kB/swrote 8.23kB in  0s, 20.84kB/swrote 9.27kB in  0s, 23.36kB/swrote 10.31kB in  0s, 25.85kB/swrote 11.33kB in  0s, 28.24kB/swrote 12.35kB in  0s, 30.62kB/swrote 13.38kB in  0s, 32.98kB/swrote 14.41kB in  0s, 35.41kB/swrote 15.45kB in  0s, 37.76kB/swrote 16.48kB in  0s, 40.10kB/swrote 17.50kB in  0s, 42.40kB/swrote 18.53kB in  0s, 44.77kB/swrote 19.56kB in  0s, 47.02kB/swrote 20.58kB in  0s, 49.23kB/swrote 21.61kB in  0s, 51.49kB/swrote 22.64kB in  0s, 53.68kB/swrote 23.68kB in  0s, 55.91kB/swrote 24.70kB in  0s, 57.99kB/swrote 25.72kB in  0s, 60.06kB/swrote 26.74kB in  0s, 62.25kB/swrote 27.78kB in  0s, 64.06kB/swrote 28.82kB in  1s, 39.22kB/swrote 29.84kB in  1s, 40.42kB/swrote 30.87kB in  1s, 41.71kB/swrote 31.91kB in  1s, 42.93kB/swrote 32.94kB in  1s, 44.25kB/swrote 33.96kB in  1s, 45.43kB/swrote 34.99kB in  1s, 46.70kB/swrote 36.02kB in  1s, 47.95kB/swrote 37.05kB in  1s, 49.10kB/swrote 38.08kB in  1s, 50.36kB/swrote 39.10kB in  1s, 51.54kB/swrote 40.14kB in  1s, 52.81kB/swrote 41.17kB in  1s, 53.98kB/swrote 42.19kB in  1s, 55.21kB/swrote 43.22kB in  1s, 56.36kB/swrote 44.27kB in  1s, 57.58kB/swrote 45.30kB in  1s, 58.68kB/swrote 46.34kB in  1s, 59.90kB/swrote 47.36kB in  1s, 61.08kB/swrote 48.39kB in  1s, 62.15kB/swrote 49.42kB in  1s, 62.99kB/swrote 50.45kB in  1s, 64.09kB/swrote 51.48kB in  1s, 65.31kB/swrote 52.51kB in  1s, 66.44kB/swrote 53.55kB in  1s, 67.62kB/swrote 54.58kB in  1s, 68.80kB/swrote 55.61kB in  1s, 69.83kB/swrote 56.64kB in  1s, 70.96kB/swrote 57.67kB in  1s, 72.05kB/swrote 58.71kB in  1s, 73.22kB/swrote 59.74kB in  1s, 74.28kB/swrote 60.76kB in  1s, 75.44kB/swrote 61.79kB in  1s, 76.42kB/swrote 62.81kB in  1s, 77.52kB/swrote 63.85kB in  1s, 78.64kB/swrote 64.87kB in  1s, 79.68kB/swrote 65.90kB in  1s, 80.78kB/swrote 66.94kB in  1s, 81.83kB/swrote 67.98kB in  1s, 82.93kB/swrote 69.01kB in  1s, 83.99kB/swrote 70.04kB in  1s, 84.97kB/swrote 71.08kB in  1s, 86.07kB/swrote 72.11kB in  1s, 87.10kB/swrote 73.14kB in  1s, 88.18kB/swrote 74.16kB in  1s, 89.19kB/swrote 75.20kB in  1s, 90.32kB/swrote 76.23kB in  1s, 90.84kB/swrote 77.25kB in  1s, 91.88kB/swrote 78.28kB in  1s, 92.76kB/swrote 79.31kB in  1s, 93.84kB/swrote 80.34kB in  1s, 94.84kB/swrote 81.37kB in  1s, 95.93kB/swrote 82.40kB in  1s, 96.86kB/swrote 83.43kB in  1s, 97.79kB/swrote 84.47kB in  1s, 98.77kB/swrote 85.51kB in  1s, 99.75kB/swrote 86.54kB in  1s, 100.68kB/swrote 87.58kB in  1s, 101.71kB/swrote 88.60kB in  1s, 102.42kB/swrote 89.64kB in  1s, 103.41kB/swrote 90.68kB in  1s, 104.39kB/swrote 91.70kB in  1s, 105.36kB/swrote 92.73kB in  1s, 105.82kB/swrote 93.77kB in  1s, 100.04kB/swrote 94.80kB in  1s, 100.85kB/swrote 95.84kB in  1s, 101.80kB/swrote 96.86kB in  1s, 102.53kB/swrote 97.89kB in  1s, 103.40kB/swrote 98.92kB in  1s, 104.18kB/swrote 99.94kB in  1s, 105.10kB/swrote 100.97kB in  1s, 105.88kB/swrote 102.00kB in  1s, 106.81kB/swrote 103.03kB in  1s, 107.54kB/swrote 104.05kB in  1s, 108.45kB/swrote 105.08kB in  1s, 108.91kB/swrote 106.10kB in  1s, 109.71kB/swrote 107.13kB in  1s, 110.65kB/swrote 108.16kB in  1s, 111.35kB/swrote 109.19kB in  1s, 112.19kB/swrote 110.22kB in  1s, 112.95kB/swrote 111.25kB in  1s, 113.85kB/swrote 112.28kB in  1s, 114.62kB/swrote 113.31kB in  1s, 115.51kB/swrote 114.34kB in  1s, 116.14kB/swrote 115.37kB in  1s, 116.72kB/swrote 116.39kB in  1s, 117.53kB/swrote 117.42kB in  1s, 118.40kB/swrote 118.44kB in  1s, 116.99kB/swrote 119.48kB in  1s, 117.81kB/swrote 120.51kB in  1s, 118.58kB/swrote 121.53kB in  1s, 119.41kB/swrote 122.57kB in  1s, 120.27kB/swrote 123.59kB in  1s, 120.98kB/swrote 124.62kB in  1s, 121.84kB/swrote 125.65kB in  1s, 122.50kB/swrote 126.69kB in  1s, 122.89kB/swrote 127.72kB in  1s, 123.68kB/swrote 128.75kB in  1s, 124.47kB/swrote 129.78kB in  1s, 125.24kB/swrote 130.82kB in  1s, 126.05kB/swrote 131.85kB in  1s, 126.78kB/swrote 132.88kB in  1s, 127.67kB/swrote 133.91kB in  1s, 128.14kB/swrote 134.95kB in  1s, 128.78kB/swrote 135.98kB in  1s, 129.56kB/swrote 137.02kB in  1s, 130.16kB/swrote 138.04kB in  1s, 130.93kB/swrote 139.07kB in  1s, 131.70kB/swrote 140.10kB in  1s, 132.48kB/s                                                                                                                                         wrote 2.15GB in  1s, 2.15GB/s                                                                                                                                         
+> cat("Scaled PCA:   PC1 =", round(100 * pca_scaled$var_explained[1], 1),
++     "% PC2 =", round(100 * pca_scaled$var_explained[2], 1), "%\n")
+Scaled PCA:   PC1 = 15.9 % PC2 = 7.7 %
+
+> cat("Unscaled PCA: PC1 =", round(100 * pca_unscaled$var_explained[1], 1),
++     "% PC2 =", round(100 * pca_unscaled$var_explained[2], 1), "%\n")
+Unscaled PCA: PC1 = 17.1 % PC2 = 8 %
+
+> for (label_pca in list(list(d = pca_scaled, lab = "scaled"), list(d = pca_unscaled, lab = "unscaled"))) {
++   p <- ggplot(label_pca$d$df, aes(PC1, P .... [TRUNCATED] 
+
+> # -----------------------------
+> # Hierarchical clustering (Ward.D2, Euclidean) with PAM50 annotation
+> # -----------------------------
+> dist_mat  .... [TRUNCATED] 
+
+> hc       <- hclust(dist_mat, method = "ward.D2")
+
+> annotation_col <- sample_metadata %>%
++   dplyr::select(PAM50) %>%
++   mutate(PAM50 = ifelse(is.na(PAM50) | PAM50 == "", "Unknown", PAM50))
+
+> png(here::here("results/figures/figure_qc_hclust_samples.png"), width = 1400, height = 900, res = 150)
+
+> pheatmap(
++   as.matrix(dist_mat), cluster_rows = hc, cluster_cols = hc,
++   annotation_col = annotation_col, show_rownames = FALSE, show_colnames = .... [TRUNCATED] 
+
+> dev.off()
+null device 
+          1 
+
+> # -----------------------------
+> # Outlier flagging (PCA z-score > 4) -- explicit retain/exclude decision
+> # -----------------------------
+> pc_z  .... [TRUNCATED] 
+
+> n_outliers <- sum(pc_z$possible_outlier)
+
+> cat("\nSamples flagged as possible PCA outliers (|z|>4):", n_outliers, "\n")
+
+Samples flagged as possible PCA outliers (|z|>4): 0 
+
+> if (n_outliers > 0) print(pc_z %>% filter(possible_outlier) %>% dplyr::select(full_barcode, PAM50, z_PC1, z_PC2))
+
+> write_csv(pc_z, here::here("results/tables/table_qc_pca_outlier_flags.csv"))
+wrote 1.38kB in  0s, 12.24MB/swrote 136.41kB in  0s, 675.75kB/swrote 137.80kB in  1s, 143.65kB/swrote 139.19kB in  1s, 144.81kB/swrote 140.57kB in  1s, 145.97kB/swrote 141.95kB in  1s, 147.16kB/swrote 143.35kB in  1s, 148.39kB/swrote 144.74kB in  1s, 149.60kB/swrote 146.12kB in  1s, 150.75kB/swrote 147.51kB in  1s, 151.83kB/swrote 148.90kB in  1s, 153.06kB/swrote 150.29kB in  1s, 154.08kB/swrote 151.68kB in  1s, 155.29kB/swrote 153.09kB in  1s, 156.25kB/swrote 154.49kB in  1s, 157.46kB/swrote 155.90kB in  1s, 158.50kB/swrote 157.30kB in  1s, 159.56kB/swrote 158.67kB in  1s, 160.68kB/swrote 160.06kB in  1s, 161.80kB/swrote 161.46kB in  1s, 162.76kB/swrote 162.85kB in  1s, 163.87kB/swrote 164.24kB in  1s, 164.96kB/swrote 165.63kB in  1s, 166.09kB/swrote 167.02kB in  1s, 167.26kB/swrote 168.42kB in  1s, 167.92kB/swrote 169.80kB in  1s, 169.05kB/swrote 171.20kB in  1s, 170.04kB/swrote 172.58kB in  1s, 171.25kB/swrote 173.96kB in  1s, 172.09kB/swrote 175.35kB in  1s, 173.25kB/swrote 176.75kB in  1s, 174.16kB/swrote 178.14kB in  1s, 175.22kB/swrote 179.54kB in  1s, 176.42kB/swrote 180.95kB in  1s, 177.25kB/swrote 182.35kB in  1s, 178.32kB/swrote 183.75kB in  1s, 179.35kB/swrote 185.14kB in  1s, 180.35kB/swrote 186.54kB in  1s, 181.47kB/swrote 187.94kB in  1s, 181.89kB/swrote 189.34kB in  1s, 182.60kB/s                                                                                                                                         wrote 2.15GB in  1s, 2.15GB/s                                                                                                                                         
+> decision_text <- c(
++   paste0("QC outlier decision (", Sys.Date(), ")"),
++   paste0("Samples flagged at |PCA z-score| > 4 on PC1/PC2: ", n_outliers .... [TRUNCATED] 
+
+> writeLines(decision_text, here::here("results/tables/NOTE_qc_outlier_decision.txt"))
+
+> # -----------------------------
+> # Batch-proxy variables from TCGA barcode (correct field positions:
+> # Plate = chars 22-25, Center = chars 27-28) .... [TRUNCATED] 
+
+> cat("\nBarcode length distribution:\n"); print(table(sample_metadata$barcode_length))
+
+Barcode length distribution:
+
+  28 
+1095 
+
+> full_length_ok <- sample_metadata$barcode_length >= 28
+
+> sample_metadata$possible_plate <- NA_character_
+
+> sample_metadata$possible_center <- NA_character_
+
+> sample_metadata$possible_plate[full_length_ok] <-
++   substr(sample_metadata$full_barcode[full_length_ok], 22, 25)
+
+> sample_metadata$possible_center[full_length_ok] <-
++   substr(sample_metadata$full_barcode[full_length_ok], 27, 28)
+
+> if (any(!full_length_ok)) {
++   warning(sum(!full_length_ok), " sample barcode(s) shorter than the expected ",
++           "28-character full TCGA a ..." ... [TRUNCATED] 
+
+> cat("\nPossible plate distribution (top 10):\n")
+
+Possible plate distribution (top 10):
+
+> print(head(sort(table(sample_metadata$possible_plate), decreasing = TRUE), 10))
+
+A034 A00Z A115 A13Q A056 A084 A169 A12D A12P A144 
+  91   90   87   72   47   46   46   42   42   40 
+
+> cat("\nPossible center distribution:\n")
+
+Possible center distribution:
+
+> print(table(sample_metadata$possible_center, useNA = "always"))
+
+  07 <NA> 
+1095    0 
+
+> batch_df <- pca_scaled$df %>%
++   left_join(sample_metadata %>%
++               dplyr::select(full_barcode, possible_plate, possible_center),
++      .... [TRUNCATED] 
+
+> p_batch <- ggplot(batch_df, aes(PC1, PC2, color = possible_center)) +
++   geom_point(alpha = 0.7, size = 1.6) +
++   labs(title = "PCA colored by pos ..." ... [TRUNCATED] 
+
+> ggsave(here::here("results/figures/figure_qc_batch_by_center.png"), p_batch, width = 7, height = 6, dpi = 300)
+
+> # PC1/PC2 vs. batch-proxy association at the QC stage itself (an early
+> # warning even before clusters exist; the DEFINITIVE test against final
+> # .... [TRUNCATED] 
+
+> cat("\nQuick early check -- PC1 (binned) vs. possible sequencing center:",
++     batch_pc_assoc$test, " p =", signif(batch_pc_assoc$p_value, 3),
++   .... [TRUNCATED] 
+
+Quick early check -- PC1 (binned) vs. possible sequencing center: insufficient data  p = NA (a DEFINITIVE cluster-vs-batch test is run in 06_snf_clustering.R)
+
+> # -----------------------------
+> # Tumor purity overlay -- now actually analyzed, not just loaded
+> # -----------------------------
+> purity_path < .... [TRUNCATED] 
+
+> if (file.exists(purity_path)) {
++   purity_df <- read_csv(purity_path, show_col_types = FALSE)
++   cat("\nTumor purity file found and loaded:", nrow .... [TRUNCATED] 
+indexing tumor_purity_clean.csv [======================================================================================] 2.15GB/s, eta:  0s                                                                                                                                           
+Tumor purity file found and loaded: 9144 rows.
+Samples matched to a purity value: 1085 of 1095 
+Tumor purity vs PC1: rho = 0.499  p = 2.84e-69 
+Tumor purity vs PC2: rho = -0.569  p = 4.8e-94 
+wrote 1.28kB in  0s, 25.09MB/swrote 87.60kB in  0s, 434.47kB/swrote 88.90kB in  0s, 296.97kB/swrote 90.18kB in  0s, 299.39kB/swrote 91.45kB in  0s, 301.96kB/swrote 92.74kB in  0s, 303.70kB/swrote 94.02kB in  0s, 306.39kB/swrote 95.30kB in  0s, 308.63kB/swrote 96.59kB in  0s, 311.10kB/swrote 97.88kB in  0s, 312.92kB/swrote 99.16kB in  0s, 315.26kB/swrote 100.45kB in  0s, 317.36kB/swrote 101.73kB in  0s, 319.58kB/swrote 103.02kB in  0s, 322.33kB/swrote 104.31kB in  0s, 323.77kB/swrote 105.61kB in  0s, 325.72kB/swrote 106.90kB in  0s, 328.80kB/swrote 108.18kB in  0s, 329.80kB/swrote 109.46kB in  0s, 332.51kB/swrote 110.74kB in  0s, 334.18kB/swrote 112.02kB in  0s, 336.36kB/swrote 113.30kB in  0s, 330.93kB/swrote 114.58kB in  0s, 329.11kB/swrote 115.87kB in  1s, 176.72kB/swrote 117.14kB in  1s, 178.10kB/swrote 118.42kB in  1s, 179.49kB/swrote 119.71kB in  1s, 181.10kB/swrote 120.99kB in  1s, 182.28kB/swrote 122.28kB in  1s, 183.84kB/swrote 123.56kB in  1s, 185.04kB/swrote 124.85kB in  1s, 186.48kB/swrote 126.13kB in  1s, 187.68kB/swrote 127.41kB in  1s, 189.21kB/swrote 128.70kB in  1s, 190.65kB/swrote 129.98kB in  1s, 191.63kB/swrote 131.26kB in  1s, 193.13kB/swrote 132.55kB in  1s, 194.22kB/swrote 133.85kB in  1s, 195.61kB/swrote 135.14kB in  1s, 196.89kB/swrote 136.42kB in  1s, 198.42kB/swrote 137.70kB in  1s, 199.58kB/swrote 138.99kB in  1s, 201.06kB/swrote 140.29kB in  1s, 202.50kB/swrote 141.58kB in  1s, 203.55kB/swrote 142.88kB in  1s, 204.93kB/swrote 144.17kB in  1s, 205.34kB/swrote 145.44kB in  1s, 206.67kB/swrote 146.72kB in  1s, 207.57kB/swrote 148.02kB in  1s, 208.97kB/swrote 149.30kB in  1s, 210.30kB/swrote 150.59kB in  1s, 211.58kB/swrote 151.87kB in  1s, 212.81kB/swrote 153.16kB in  1s, 214.10kB/swrote 154.45kB in  1s, 215.38kB/swrote 155.73kB in  1s, 216.38kB/swrote 157.02kB in  1s, 217.82kB/swrote 158.30kB in  1s, 218.98kB/swrote 159.58kB in  1s, 220.26kB/swrote 160.86kB in  1s, 221.55kB/swrote 162.16kB in  1s, 222.33kB/swrote 163.45kB in  1s, 223.22kB/swrote 164.74kB in  1s, 224.53kB/swrote 166.03kB in  1s, 224.25kB/swrote 167.33kB in  1s, 225.28kB/swrote 168.63kB in  1s, 226.64kB/swrote 169.91kB in  1s, 226.57kB/swrote 171.20kB in  1s, 226.51kB/swrote 172.50kB in  1s, 227.64kB/swrote 173.79kB in  1s, 228.57kB/s                                                                                                                                         wrote 2.15GB in  1s, 2.15GB/s                                                                                                                                         
+> # Persist batch proxies onto the SAME metadata object every downstream
+> # script reads (sample_metadata_matched.rds), not only the previously
+> # d .... [TRUNCATED] 
+
+> sample_metadata_matched$possible_plate  <- sample_metadata[rownames(sample_metadata_matched), "possible_plate"]
+
+> sample_metadata_matched$possible_center <- sample_metadata[rownames(sample_metadata_matched), "possible_center"]
+
+> saveRDS(sample_metadata_matched, here::here("data/processed/sample_metadata_matched.rds"))
+
+> saveRDS(sample_metadata, here::here("data/processed/sample_metadata_with_qc.rds"))
+
+> log_session_info(script_name)
+
+> cat("\n\u2713 04_quality_control.R complete. Batch proxies merged into sample_metadata_matched.rds.\n")
+
+✓ 04_quality_control.R complete. Batch proxies merged into sample_metadata_matched.rds.
+
+> close_logger(log_con, script_name)
+==== 04_quality_control finished: 2026-07-06 00:31:26.132929 ====

@@ -1,0 +1,108 @@
+==== 05_tf_activity started: 2026-08-12 19:53:43.618839 ====
+Pipeline seed: 20240601 
+Full filtered expression matrix: 25921 genes x 1095 samples
+G3;'select()' returned 1:many mapping between keys and columns
+gExpression matrix after SYMBOL mapping/dedup: 20303 genes
+Shared inference signature matrix: 20303 1095 
+CollecTRI loaded from cache: D:/TF-SNF-BRCA/data/processed/network_collectri.rds 
+
+Regulon sources assembled: dorothea_AC, dorothea_AB, collectri, dorothea_AC_edgeperm, dorothea_AB_edgeperm, collectri_edgeperm 
+  dorothea_AC                263 TFs,   12699 edges (after filtering to measured targets)
+  dorothea_AB                111 TFs,    5999 edges (after filtering to measured targets)
+  collectri                  552 TFs,   54331 edges (after filtering to measured targets)
+  dorothea_AC_edgeperm       268 TFs,   12510 edges (after filtering to measured targets)
+  dorothea_AB_edgeperm       112 TFs,    5741 edges (after filtering to measured targets)
+  collectri_edgeperm         558 TFs,   48634 edges (after filtering to measured targets)
+
+================ Running TF activity grid ================
+Grid: 24 cells -- 6 regulons x 4 methods
+Method order (interrupt-safe): viper -> ulm -> mlm -> norm_wsum 
+
+  [ok]     dorothea_AC__viper                  263 TFs  (10.5 min)
+  [ok]     dorothea_AB__viper                  111 TFs  (5.2 min)
+  [ok]     collectri__viper                    552 TFs  (42.5 min)
+  [ok]     dorothea_AC_edgeperm__viper         268 TFs  (5.3 min)
+  [ok]     dorothea_AB_edgeperm__viper         112 TFs  (3.9 min)
+  [ok]     collectri_edgeperm__viper           558 TFs  (29.3 min)
+  [ok]     dorothea_AC__ulm                    263 TFs  (1.4 min)
+  [ok]     dorothea_AB__ulm                    111 TFs  (0.6 min)
+  [ok]     collectri__ulm                      552 TFs  (3.6 min)
+  [ok]     dorothea_AC_edgeperm__ulm           268 TFs  (1.4 min)
+  [ok]     dorothea_AB_edgeperm__ulm           112 TFs  (0.7 min)
+  [ok]     collectri_edgeperm__ulm             558 TFs  (3.5 min)
+  [ok]     dorothea_AC__mlm                    263 TFs  (2.6 min)
+  [ok]     dorothea_AB__mlm                    111 TFs  (1.7 min)
+  [FAILED] collectri__mlm                     After intersecting mat and network, at least 22 sources in the network are colinear with other sources.
+Cannot fit a linear model with colinear covariables, please remove them.
+Please run decoupleR::check_corr to see what regulators are correlated.
+  [ok]     dorothea_AC_edgeperm__mlm           268 TFs  (2.9 min)
+  [ok]     dorothea_AB_edgeperm__mlm           112 TFs  (2.4 min)
+  [ok]     collectri_edgeperm__mlm             558 TFs  (8.6 min)
+  [ok]     dorothea_AC__norm_wsum              263 TFs  (20.4 min)
+  [ok]     dorothea_AB__norm_wsum              111 TFs  (3.9 min)
+  [ok]     collectri__norm_wsum                552 TFs  (47.5 min)
+  [ok]     dorothea_AC_edgeperm__norm_wsum     268 TFs  (34.5 min)
+  [ok]     dorothea_AB_edgeperm__norm_wsum     112 TFs  (6.0 min)
+  [ok]     collectri_edgeperm__norm_wsum       558 TFs  (52.5 min)
+  [ok]     dorothea_AC__consensus              263 TFs  (consensus of 4 methods)
+  [ok]     dorothea_AB__consensus              111 TFs  (consensus of 4 methods)
+  [ok]     collectri__consensus                552 TFs  (consensus of 3 methods)
+  [ok]     dorothea_AC_edgeperm__consensus     268 TFs  (consensus of 4 methods)
+  [ok]     dorothea_AB_edgeperm__consensus     112 TFs  (consensus of 4 methods)
+  [ok]     collectri_edgeperm__consensus       558 TFs  (consensus of 4 methods)
+
+Grid complete: 29 of 30 views produced successfully.
+
+Cross-view concordance (median per-TF Spearman), most similar pairs:
+# A tibble: 10 × 4
+   view_a                      view_b                    n_shared_TFs median_per_TF_spearman
+   <chr>                       <chr>                            <int>                  <dbl>
+ 1 dorothea_AC__viper          dorothea_AB__viper                 111                  1    
+ 2 dorothea_AC__ulm            dorothea_AB__ulm                   111                  1    
+ 3 dorothea_AC__norm_wsum      dorothea_AB__norm_wsum             111                  1    
+ 4 dorothea_AC__consensus      dorothea_AB__consensus             111                  0.999
+ 5 collectri__ulm              collectri__consensus               552                  0.998
+ 6 dorothea_AC__ulm            dorothea_AC__norm_wsum             263                  0.997
+ 7 dorothea_AC__viper          dorothea_AC__ulm                   263                  0.997
+ 8 collectri__norm_wsum        collectri__consensus               552                  0.997
+ 9 dorothea_AC_edgeperm__viper dorothea_AC_edgeperm__ulm          268                  0.997
+10 dorothea_AC__ulm            dorothea_AB__norm_wsum             111                  0.996
+
+Least similar pairs:
+# A tibble: 10 × 4
+   view_a                    view_b                          n_shared_TFs median_per_TF_spearman
+   <chr>                     <chr>                                  <int>                  <dbl>
+ 1 collectri_edgeperm__mlm   dorothea_AB_edgeperm__consensus          110              -0.00164 
+ 2 collectri_edgeperm__mlm   dorothea_AC__norm_wsum                   217               0.000732
+ 3 dorothea_AC__ulm          collectri_edgeperm__mlm                  217               0.00534 
+ 4 dorothea_AC__viper        collectri_edgeperm__mlm                  217               0.0105  
+ 5 collectri_edgeperm__mlm   dorothea_AC__consensus                   217               0.0108  
+ 6 dorothea_AB_edgeperm__mlm collectri_edgeperm__mlm                  110               0.0133  
+ 7 dorothea_AC__mlm          collectri_edgeperm__mlm                  217               0.0144  
+ 8 dorothea_AC__mlm          dorothea_AC_edgeperm__mlm                261               0.0154  
+ 9 collectri_edgeperm__mlm   dorothea_AB_edgeperm__norm_wsum          110               0.0170  
+10 dorothea_AB_edgeperm__ulm collectri_edgeperm__mlm                  110               0.0182  
+
+=== Real regulon vs its own degree-matched edge-permuted control ===
+# A tibble: 14 × 4
+   view_a                 view_b                          n_shared_TFs median_per_TF_spearman
+   <chr>                  <chr>                                  <int>                  <dbl>
+ 1 dorothea_AC__viper     dorothea_AC_edgeperm__viper              261                 0.243 
+ 2 dorothea_AB__viper     dorothea_AB_edgeperm__viper              108                 0.214 
+ 3 collectri__viper       collectri_edgeperm__viper                535                 0.275 
+ 4 dorothea_AC__ulm       dorothea_AC_edgeperm__ulm                261                 0.241 
+ 5 dorothea_AB__ulm       dorothea_AB_edgeperm__ulm                108                 0.209 
+ 6 collectri__ulm         collectri_edgeperm__ulm                  535                 0.288 
+ 7 dorothea_AC__mlm       dorothea_AC_edgeperm__mlm                261                 0.0154
+ 8 dorothea_AB__mlm       dorothea_AB_edgeperm__mlm                108                 0.0579
+ 9 dorothea_AC__norm_wsum dorothea_AC_edgeperm__norm_wsum          261                 0.248 
+10 dorothea_AB__norm_wsum dorothea_AB_edgeperm__norm_wsum          108                 0.211 
+11 collectri__norm_wsum   collectri_edgeperm__norm_wsum            535                 0.292 
+12 dorothea_AC__consensus dorothea_AC_edgeperm__consensus          261                 0.177 
+13 dorothea_AB__consensus dorothea_AB_edgeperm__consensus          108                 0.166 
+14 collectri__consensus   collectri_edgeperm__consensus            535                 0.239 
+
+Backward-compatible primary view written: dorothea_AC__viper 
+
+✓ 05_tf_activity.R complete. 29 TF-activity views written to tf_activity_grid.rds
+==== 05_tf_activity finished: 2026-08-13 01:10:01.379887 ====

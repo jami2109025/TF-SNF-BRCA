@@ -1,0 +1,55 @@
+==== 08_pam50_comparison started: 2026-07-11 14:48:26.992584 ====
+Pipeline seed: 20240601 
+METHODOLOGICAL CAVEAT: PAM50 / CLAUDIN_SUBTYPE non-independence
+==================================================================
+PAM50 subtype calls (TCGAquery_subtype, used in 08_pam50_comparison.R)
+and METABRIC CLAUDIN_SUBTYPE calls (used in 13_external_validation.R)
+are both derived, by their respective classifiers, from tumor gene
+expression. They are NOT independent ground-truth labels relative to
+the SNF clusters produced by this pipeline, which are also derived
+from gene expression (plus TF activity, itself a function of
+expression). Concordance metrics (ARI, NMI, chi-square) between SNF
+clusters and PAM50/CLAUDIN_SUBTYPE should therefore be reported and
+discussed as AGREEMENT BETWEEN TWO EXPRESSION-BASED CLASSIFICATION
+SCHEMES, not as validation against an independent clinical or
+molecular ground truth. This caveat must be stated explicitly
+wherever such comparisons are reported in the manuscript.
+
+
+--- k = 2 ---
+Samples with PAM50 available: 1083 of 1095  (98.9%) 
+
+Contingency table:
+        
+         Basal Her2 LumA LumB Normal
+  SNF_C1     3   31  549  187     28
+  SNF_C2   187   51   13   22     12
+Minimum expected cell count: 10.53  -> using Chi-square 
+ARI: 0.411  NMI: 0.287 
+Permutation null (n=1000): empirical p-value (ARI vs. chance) = <0.001
+Association test used: Chi-square  p = 9.53e-163 
+
+--- k = 3 ---
+Samples with PAM50 available: 1083 of 1095  (98.9%) 
+
+Contingency table:
+        
+         Basal Her2 LumA LumB Normal
+  SNF_C1     1   19  242  173      1
+  SNF_C2     0   11  311   18     32
+  SNF_C3   189   52    9   18      7
+Minimum expected cell count: 10.16  -> using Chi-square 
+ARI: 0.326  NMI: 0.377 
+Permutation null (n=1000): empirical p-value (ARI vs. chance) = <0.001
+Association test used: Chi-square  p = 1.99e-212 
+
+
+Summary (k=2 vs k=3, both reported):
+# A tibble: 2 × 9
+      k n_with_pam50 n_total min_expected_cell_count association_test   p_value   ARI   NMI empirical_p_ARI_vs_permutation_null
+  <dbl>        <int>   <int>                   <dbl> <chr>                <dbl> <dbl> <dbl>                               <dbl>
+1     2         1083    1095                    10.5 Chi-square       9.53e-163 0.411 0.287                                   0
+2     3         1083    1095                    10.2 Chi-square       1.99e-212 0.326 0.377                                   0
+
+✓ 08_pam50_comparison.R complete.
+==== 08_pam50_comparison finished: 2026-07-11 14:48:39.162724 ====

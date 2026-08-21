@@ -1,0 +1,4 @@
+package,version,script,date
+dorothea,1.18.0,05_tf_activity,2026-08-13
+decoupleR,2.12.0,05_tf_activity,2026-08-13
+OmnipathR,3.14.0,05_tf_activity,2026-08-13

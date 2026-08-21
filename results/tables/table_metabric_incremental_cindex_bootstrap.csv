@@ -1,0 +1,3 @@
+label,n_boot_valid,point_estimate,ci90_lower,ci90_upper,ci95_lower,ci95_upper,sesoi,p_tost,p_two_sided,equivalent,superior,conclusion,k
+delta_cindex_M3_over_M2_k2,2000,0.0026176429249058805,1.2279039796043724e-4,0.006543272276509346,-1.5269384126168068e-5,0.007651168362084777,0.02,0,0.056,TRUE,FALSE,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI,2
+delta_cindex_M3_over_M2_k3,2000,0.001819735390606447,-2.086623775827079e-4,0.00547743793259694,-3.935976089961046e-4,0.0064289308379935845,0.02,0,0.199,TRUE,FALSE,EQUIVALENT TO ZERO: any true added value is smaller than the pre-specified SESOI,3

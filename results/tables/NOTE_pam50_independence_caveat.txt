@@ -1,0 +1,14 @@
+METHODOLOGICAL CAVEAT: PAM50 / CLAUDIN_SUBTYPE non-independence
+==================================================================
+PAM50 subtype calls (TCGAquery_subtype, used in 08_pam50_comparison.R)
+and METABRIC CLAUDIN_SUBTYPE calls (used in 13_external_validation.R)
+are both derived, by their respective classifiers, from tumor gene
+expression. They are NOT independent ground-truth labels relative to
+the SNF clusters produced by this pipeline, which are also derived
+from gene expression (plus TF activity, itself a function of
+expression). Concordance metrics (ARI, NMI, chi-square) between SNF
+clusters and PAM50/CLAUDIN_SUBTYPE should therefore be reported and
+discussed as AGREEMENT BETWEEN TWO EXPRESSION-BASED CLASSIFICATION
+SCHEMES, not as validation against an independent clinical or
+molecular ground truth. This caveat must be stated explicitly
+wherever such comparisons are reported in the manuscript.

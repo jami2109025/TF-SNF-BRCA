@@ -1,0 +1,7 @@
+endpoint,k,n_views,n_superior_after_BH,n_equivalent_after_BH,best_view,best_point_estimate
+cindex_adjusted,2,29,0,29,dorothea_AB_edgeperm__norm_wsum,7.755870489520162e-4
+cindex_adjusted,3,29,0,29,dorothea_AC_edgeperm__mlm,5.628513988672173e-4
+cindex_cluster_only,2,29,0,29,dorothea_AC_edgeperm__consensus,0.002950413252255031
+cindex_cluster_only,3,29,0,0,dorothea_AB__ulm,0.0014600669983457298
+lrt_over_age_er,2,29,0,7,dorothea_AC_edgeperm__consensus,1.2147119201389687
+lrt_over_age_er,3,29,0,0,dorothea_AC_edgeperm__mlm,2.746190963552639

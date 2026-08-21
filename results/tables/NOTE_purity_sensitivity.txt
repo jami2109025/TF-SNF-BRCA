@@ -1,0 +1,33 @@
+TUMOUR-PURITY CONFOUND: what was tested and how to report it.
+======================================================================
+Script 04 reported very large correlations between ABSOLUTE tumour
+purity and the two leading expression principal components
+(rho = 0.50 with PC1; rho = -0.57 with PC2) and did not follow them
+up. Bulk RNA-seq measures a mixture of tumour, stroma and immune
+cells, so any clustering of bulk expression can separate samples by
+tumour CONTENT rather than tumour BIOLOGY. This script closes that
+gap.
+
+THREE SEPARATE QUESTIONS, THREE SEPARATE TABLES.
+1. table_purity_by_cluster.csv -- do clusters differ in purity?
+   An association alone is NOT evidence of artefact: real subtypes
+   genuinely differ in stromal and immune content.
+2. table_purity_sensitivity.csv -- does the partition SURVIVE having
+   purity regressed out of every gene? This is the decisive test.
+   Variant A also re-selects top-variance features on the
+   residualised matrix, and so additionally tests whether the
+   original variance-based feature selection was itself
+   purity-driven -- which the fixed-feature Variant B cannot detect.
+3. table_purity_vs_cluster_prognostic.csv -- do the clusters carry
+   prognostic information beyond purity alone?
+
+LIMITATION. Adjustment is LINEAR in purity. Non-linear purity
+effects, and interactions between purity and biology, are not
+removed. A cell-type deconvolution approach would address more of
+this but introduces its own reference-profile assumptions.
+
+HOW TO REPORT. Whichever way this comes out, report it in the main
+text rather than the supplement. If the clusters are robust, this is
+a strong pre-emptive answer to an obvious referee question. If they
+are not, that is a more interesting finding than another
+re-derivation of the ER+/ER- split, and should be framed as such.
