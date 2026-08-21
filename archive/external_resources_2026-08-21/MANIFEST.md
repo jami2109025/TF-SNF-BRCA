@@ -61,5 +61,5 @@ and no network access will occur.
 
 ## Citation
 
-If you use this archive, please cite both the deposit DOI and the original
+If you use this archive, please cite the project report and the original
 resources (CollecTRI, DoRothEA, MSigDB) in their own right.
