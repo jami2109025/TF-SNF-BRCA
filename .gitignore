@@ -54,3 +54,8 @@ thesis_final_v2/
 thesis_final/*
 !thesis_final/main_thesis.pdf
 *.bak
+README_REVISION.md 
+
+# ---- external-resource archive: keep it despite the *.rds rule above ----
+!archive/
+!archive/**

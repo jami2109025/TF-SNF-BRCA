@@ -1,0 +1,45 @@
+==== 99_archive_external_resources started: 2026-08-21 17:46:47.379338 ====
+Pipeline seed: 20240601 
+Archive directory: D:/TF-SNF-BRCA/archive/external_resources_2026-08-21 
+
+Archiving external resources...
+  [ok] collectri_network        62411 rows  (OmnipathR vNA)  md5=846a1282
+  [ok] dorothea_hs_regulons    454504 rows  (dorothea v1.18.0)  md5=7ee081a8
+  [ok] msigdb_hallmark           7331 rows  (msigdbr v26.1.0)  md5=02c543a2
+  [ok] msigdb_reactome         113653 rows  (msigdbr v26.1.0)  md5=3d641429
+indexing table_ensembl_symbol_map_used.csv [==================================================================] 2.15GB/s, eta:  0s                                                                                                                                  wrote 692.00B in  0s, 29.92MB/s                                                                                                                                wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                  [ok] ensembl_symbol_map_used   20303 rows  (org.Hs.eg.db v3.20.0)  md5=6246eeb6
+wrote 2.15GB in  0s, 2.15GB/s                                                                                                                                
+Manifest:
+# A tibble: 5 × 5
+  resource                n_rows package      package_version size_kb
+  <chr>                    <int> <chr>        <chr>             <dbl>
+1 collectri_network        62411 OmnipathR    <NA>               249.
+2 dorothea_hs_regulons    454504 dorothea     1.18.0            1666.
+3 msigdb_hallmark           7331 msigdbr      26.1.0             137.
+4 msigdb_reactome         113653 msigdbr      26.1.0            2103.
+5 ensembl_symbol_map_used  20303 org.Hs.eg.db 3.20.0             198.
+
+Snapshotting package environment to renv.lock ...
+The following required packages are not installed:
+- GenomicDataCommons
+- OmnipathR
+- RhpcBLASctl
+Packages must first be installed before renv can snapshot them.
+Use `]8;;x-r-run:renv::dependencies()renv::dependencies()]8;;` to see where this package is used in your project.
+
+What do you want to do? 
+
+1: Snapshot, just using the currently installed packages.
+2: Install the packages, then snapshot.
+3: Cancel, and resolve the situation on your own.
+
+G3;- Operation canceled.
+gWarning messages:
+1: The `category` argument of `msigdbr()` is deprecated as of msigdbr 10.0.0.
+ℹ Please use the `collection` argument instead.
+This warning is displayed once per session.
+Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated. 
+2: The `subcategory` argument of `msigdbr()` is deprecated as of msigdbr 10.0.0.
+ℹ Please use the `subcollection` argument instead.
+This warning is displayed once per session.
+Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated. 
